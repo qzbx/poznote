@@ -26,5 +26,7 @@
 % npm run start
 ```
 
-`poznote/md` 以下で .md を追加したり編集したりする
+編集
+1. ブラウザで `index.html` を開く
+1. `poznote/md` 以下で .md を追加したり編集したりする
 

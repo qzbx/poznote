@@ -3,13 +3,12 @@ const marked = require("marked");
 const chokidar = require("chokidar");
 
 // md から生成する html の <body> までの前半部分
-// MathJax 適用
-// livereload 適用
 const header = `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <script>
+    // mathjax の設定
     MathJax = {
       chtml: {
         matchFontHeight: false
@@ -23,12 +22,27 @@ const header = `<!DOCTYPE html>
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
   <script>
+    // livereload の設定
     document.write(
       '<script src="http://' + 
       (location.host || 'localhost').split(':')[0] + 
       ':35729/livereload.js?snipver=1"></' + 
       'script>'
     )
+  </script>
+  <script>
+    // リロードの直前にスクロール量を保存する
+    window.onbeforeunload = () => {
+      sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
+    };
+  </script>
+  <script defer>
+    // リロード時に直前のスクロール量を復元する
+    const y = sessionStorage.getItem("poznote-scroll");
+    if (y) {
+      const msec = "200"; // 待機時間（msec）
+      setTimeout(() => {window.scrollTo(0, y)}, msec);
+    }
   </script>
 </head>
 <body>
@@ -72,7 +86,6 @@ fs.readdir("./md/", (e, files) => {
 
 // 監視開始
 watcher.on("ready", () => {
-
     console.log("PozNote is running...");
     watcher.on("add", (path) => { // ファイル追加時
         console.log("[Add]   " + path);
