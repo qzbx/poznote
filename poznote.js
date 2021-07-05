@@ -3,10 +3,24 @@ const marked = require("marked");
 const chokidar = require("chokidar");
 
 // md から生成する html の <body> までの前半部分
+// MathJax 適用
 const header = `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    MathJax = {
+      chtml: {
+        matchFontHeight: false
+      },
+      tex: {
+        inlineMath: [['$', '$']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
 </head>
 <body>
 `;
@@ -40,7 +54,7 @@ const md2html = (name) => {
 // 監視開始
 watcher.on("ready", () => {
 
-    console.log("md2html is running...");
+    console.log("PozNote is running...");
 
     watcher.on("add", (path) => { // ファイル追加時
         console.log("[Add]  " + path);
