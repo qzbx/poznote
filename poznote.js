@@ -3,12 +3,12 @@ const marked = require("marked");
 const chokidar = require("chokidar");
 
 // md から生成する html の <body> までの前半部分
-// MathJax 適用
 const header = `<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <script>
+    // mathjax の設定
     MathJax = {
       chtml: {
         matchFontHeight: false
@@ -21,12 +21,53 @@ const header = `<!DOCTYPE html>
   <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
+  <script>
+    // livereload の設定
+    document.write(
+      '<script src="http://' + 
+      (location.host || 'localhost').split(':')[0] + 
+      ':35729/livereload.js?snipver=1"></' + 
+      'script>'
+    )
+  </script>
 </head>
 <body>
 `;
 
 // md から生成する html の </body> 以降の後半部分
-const footer = `</body>
+const footer = `
+    <script>
+      // リロードの直前にスクロール量を保存する
+      window.onbeforeunload = () => {
+        sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
+        const bottom = document.body.clientHeight - window.innerHeight; // not just fit
+        if (window.pageYOffset >= bottom) { // 一番下までいってた場合は追従する
+          sessionStorage.setItem("poznote-bottom", "true");
+        }
+      };
+    </script>
+    <script defer>
+      // リロード時に直前のスクロール量を復元する
+      const y = sessionStorage.getItem("poznote-scroll");
+      const b = sessionStorage.getItem("poznote-bottom");
+      if (y) {
+        const msec = "200"; // 待機時間（msec）
+        if (b) { // 一番下までスクロールされてた場合は追従する
+          const bottom = document.body.clientHeight;
+          setTimeout(() => {
+            window.scrollTo(0, bottom)
+            sessionStorage.removeItem("poznote-scroll");
+            sessionStorage.removeItem("poznote-bottom");
+          }, msec);
+        } else {
+          setTimeout(() => {
+            window.scrollTo(0, y)
+            sessionStorage.removeItem("poznote-scroll");
+          }, msec);
+        }
+      }
+    </script>
+  </body>
 </html>`;
 
 
@@ -63,7 +104,6 @@ fs.readdir("./md/", (e, files) => {
 
 // 監視開始
 watcher.on("ready", () => {
-
     console.log("PozNote is running...");
     watcher.on("add", (path) => { // ファイル追加時
         console.log("[Add]   " + path);

@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "livereloadx html/ & node poznote.js"
+  },
   "dependencies": {
     "chokidar": "^3.5.2",
     "marked": "^2.1.3"
