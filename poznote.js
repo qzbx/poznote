@@ -51,7 +51,7 @@ const footer = `
       const y = sessionStorage.getItem("poznote-scroll");
       const b = sessionStorage.getItem("poznote-bottom");
       if (y) {
-        const msec = "200"; // 待機時間（msec）
+        const msec = "500"; // 待機時間（msec）
         if (b) { // 一番下までスクロールされてた場合は追従する
           const bottom = document.body.clientHeight;
           setTimeout(() => {

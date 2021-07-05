@@ -52,14 +52,14 @@
 <p>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！</p>
 <p>このへんを見てる<br>みてるよ</p>
 <p>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！</p>
-<p>末尾<br>末尾<br>末尾<br>末尾</p>
+<p>末尾<br>末尾<br>末尾</p>
 
     <script>
       // リロードの直前にスクロール量を保存する
       window.onbeforeunload = () => {
         sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
-        const bottom = document.body.clientHeight - window.innerHeight;
-        if (window.pageYOffset >= bottom) {
+        const bottom = document.body.clientHeight - window.innerHeight; // not just fit
+        if (window.pageYOffset >= bottom) { // 一番下までいってた場合は追従する
           sessionStorage.setItem("poznote-bottom", "true");
         }
       };
@@ -69,7 +69,7 @@
       const y = sessionStorage.getItem("poznote-scroll");
       const b = sessionStorage.getItem("poznote-bottom");
       if (y) {
-        const msec = "200"; // 待機時間（msec）
+        const msec = "500"; // 待機時間（msec）
         if (b) { // 一番下までスクロールされてた場合は追従する
           const bottom = document.body.clientHeight;
           setTimeout(() => {
