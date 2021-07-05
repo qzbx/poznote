@@ -1,19 +1,29 @@
 # PozNote
 
-- hot reload してほしい（viewer 側のスクロール位置も保持してほしい）
+.md で快適にノートを取りたい  
+自分用だし作りかけ
+
+## Feature
+- .md をリアルタイムで .html に変換する
+- ブラウザで見てる .html をホットリロードする
+- リロード時にスクロール位置が狂わない（一番下のときはそのまま追従する）
+- MathJax 対応
+- 点丸をピリカンに置換
+
+
+## TODO
 - index.html が各ファイルへのリンク集みたいになっててほしい
-  - 表紙の index.html も .md から作成したい
+  - 表紙の index.html も .md から作成したいが果たして？
 - いい感じ™の CSS 
 
-現状：  
+
+## 仕組み
 `./md/(sample).md` が変更されたら自動で `./html/(sample).html` を作ってくれる
 
-`node poznote.js` で起動する。  
-`./md/` 以下を監視してるので、そこのファイルを追加・編集すると html ができる
 
-### つかいかた（仮）
+## つかいかた（仮）
 
-初期設定
+### 初期設定
 ```
 % sudo npm i -g livereloadx
 % git clone https://github.com/qzbx/poznote.git
@@ -21,12 +31,12 @@
 % npm i
 ```
 
-起動
+### 起動
 ```
 % npm run start
 ```
 
-編集
-1. ブラウザで `index.html` を開く
+### 編集
+1. ブラウザで `index.html` を開く（まだ作ってない）
 1. `poznote/md` 以下で .md を追加したり編集したりする
 

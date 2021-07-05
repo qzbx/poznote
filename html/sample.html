@@ -25,21 +25,6 @@
       'script>'
     )
   </script>
-  <script>
-    // リロードの直前にスクロール量を保存する
-    window.onbeforeunload = () => {
-      sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
-    };
-  </script>
-  <script defer>
-    // リロード時に直前のスクロール量を復元する
-    const y = sessionStorage.getItem("poznote-scroll");
-    if (y) {
-      const msec = "200"; // 待機時間（msec）
-      setTimeout(() => {window.scrollTo(0, y)}, msec);
-      // window.scrollTo(0, y);
-    }
-  </script>
 </head>
 <body>
 <h1 id="さんぷる">さんぷる</h1>
@@ -58,15 +43,47 @@
 <li>UL</li>
 </ul>
 <h2 id="数式">数式</h2>
+<p>$a \neq b \rightarrow \mathcal{C}$</p>
 <h2 id="置換用">置換用</h2>
 <p>句読点，を，置換して，揃えて，ほしい．よな．</p>
 <p>ほげー</p>
 <p>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！</p>
-<p>わはー<br>わはー</p>
+<p>わはー<br>わはー<br>わはー</p>
 <p>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！</p>
 <p>このへんを見てる<br>みてるよ</p>
 <p>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！</p>
-<p>末尾<br>末尾</p>
+<p>末尾<br>末尾<br>末尾<br>末尾</p>
 
+    <script>
+      // リロードの直前にスクロール量を保存する
+      window.onbeforeunload = () => {
+        sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
+        const bottom = document.body.clientHeight - window.innerHeight;
+        if (window.pageYOffset >= bottom) {
+          sessionStorage.setItem("poznote-bottom", "true");
+        }
+      };
+    </script>
+    <script defer>
+      // リロード時に直前のスクロール量を復元する
+      const y = sessionStorage.getItem("poznote-scroll");
+      const b = sessionStorage.getItem("poznote-bottom");
+      if (y) {
+        const msec = "200"; // 待機時間（msec）
+        if (b) { // 一番下までスクロールされてた場合は追従する
+          const bottom = document.body.clientHeight;
+          setTimeout(() => {
+            window.scrollTo(0, bottom)
+            sessionStorage.removeItem("poznote-scroll");
+            sessionStorage.removeItem("poznote-bottom");
+          }, msec);
+        } else {
+          setTimeout(() => {
+            window.scrollTo(0, y)
+            sessionStorage.removeItem("poznote-scroll");
+          }, msec);
+        }
+      }
+    </script>
   </body>
 </html>
