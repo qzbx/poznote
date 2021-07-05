@@ -10,3 +10,21 @@
 
 `node poznote.js` で起動する。  
 `./md/` 以下を監視してるので、そこのファイルを追加・編集すると html ができる
+
+### つかいかた（仮）
+
+初期設定
+```
+% sudo npm i -g livereloadx
+% git clone https://github.com/qzbx/poznote.git
+% cd poznote
+% npm i
+```
+
+起動
+```
+% npm run start
+```
+
+`poznote/md` 以下で .md を追加したり編集したりする
+

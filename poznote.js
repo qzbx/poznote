@@ -4,6 +4,7 @@ const chokidar = require("chokidar");
 
 // md から生成する html の <body> までの前半部分
 // MathJax 適用
+// livereload 適用
 const header = `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -20,6 +21,14 @@ const header = `<!DOCTYPE html>
   </script>
   <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+  <script>
+    document.write(
+      '<script src="http://' + 
+      (location.host || 'localhost').split(':')[0] + 
+      ':35729/livereload.js?snipver=1"></' + 
+      'script>'
+    )
   </script>
 </head>
 <body>
