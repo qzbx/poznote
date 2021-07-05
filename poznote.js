@@ -5,33 +5,36 @@ const chokidar = require("chokidar");
 // md から生成する html の <body> までの前半部分
 const header = `<!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <script>
-    // mathjax の設定
-    MathJax = {
-      chtml: {
-        matchFontHeight: false
-      },
-      tex: {
-        inlineMath: [['$', '$']]
-      }
-    };
-  </script>
-  <script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-  </script>
-  <script>
-    // livereload の設定
-    document.write(
-      '<script src="http://' + 
-      (location.host || 'localhost').split(':')[0] + 
-      ':35729/livereload.js?snipver=1"></' + 
-      'script>'
-    )
-  </script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script>
+      // mathjax の設定
+      MathJax = {
+        chtml: {
+          matchFontHeight: false
+        },
+        tex: {
+          inlineMath: [['$', '$']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <script>
+      // livereload の設定
+      document.write(
+        '<script src="http://' + 
+        (location.host || 'localhost').split(':')[0] + 
+        ':35729/livereload.js?snipver=1"></' + 
+        'script>'
+      )
+    </script>
+  </head>
+  <body>
 `;
 
 // md から生成する html の </body> 以降の後半部分
