@@ -50,19 +50,28 @@ const md2html = (name) => {
   });
 };
 
+// 起動時に ./md/ 以下を全部見て変換・出力する
+fs.readdir("./md/", (e, files) => {
+  if (e) throw e;
+  for (const path of files) {
+    console.log("[Check] " + "md/" + path);
+    // ここの path は ./md/ 以下の部分のパス（先頭に md/ は付いてない）ので注意
+    md2html(path.split(".")[0]); // hoge.md -> hoge を渡す
+  }
+  console.log("Successfully initialized");
+})
 
 // 監視開始
 watcher.on("ready", () => {
 
     console.log("PozNote is running...");
-
     watcher.on("add", (path) => { // ファイル追加時
-        console.log("[Add]  " + path);
+        console.log("[Add]   " + path);
         md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
     });
 
     watcher.on("change", (path) => { // ファイル編集時
-        console.log("[Edit] " + path);
+        console.log("[Edit]  " + path);
         md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
     });
 });
