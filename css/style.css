@@ -67,6 +67,18 @@ article.md {
 .md p {
   padding: 0.6rem 1.0rem 0.4rem 1.0rem;
 }
+.md p em {
+  color: #d70;
+}
+.md p strong {
+  color: #546;
+  font-weight: bold;
+}
+.md p em strong {
+  color: #d70;
+  font-weight: bold;
+}
+
 
 /* リスト */
 .md ul {
