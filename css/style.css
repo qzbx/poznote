@@ -36,8 +36,8 @@ article.md {
   font-size: 1.4rem;
   line-height: 100%;
   font-weight: normal;
-  padding: 0.2rem 0 0 1rem;
-  margin: 1.2rem 0.0rem 0.4rem 0.0rem;
+  padding: 0.2rem 0 0 0.8rem;
+  margin: 1.2rem 0.0rem 0.4rem 0.2rem;
   color: #435;
   border-left: 10px solid #ea3;
 }
@@ -49,32 +49,32 @@ article.md {
   color: #324;
 }
 .md h5 {
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   line-height: 100%;
   font-weight: normal;
   padding: 1.0rem 0.0rem 0.2rem 0.4rem;
-  color: #213;
+  color: #102;
 }
 .md h6 {
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   line-height: 100%;
   font-weight: normal;
   padding: 1.0rem 0.0rem 0.2rem 0.4rem;
-  color: #213;
+  color: #102;
 }
 
 /* 地の文 */
 .md p {
   padding: 0.6rem 1.0rem 0.4rem 1.0rem;
 }
-.md p em {
+.md em {
   color: #d70;
 }
-.md p strong {
+.md strong {
   color: #546;
   font-weight: bold;
 }
-.md p em strong {
+.md em strong {
   color: #d70;
   font-weight: bold;
 }
@@ -82,8 +82,8 @@ article.md {
 /* 引用 */
 .md blockquote {
   margin: 0.2rem 1.2rem;
-  border-left: .25rem solid #aaa;
-  color: #666;
+  border-left: .25rem solid #888;
+  color: #444;
 }
 
 /* リスト */
@@ -135,6 +135,24 @@ article.md {
 }
 .md ol ol ol {
   padding-left: 1.4rem;
+}
+
+/* 図表 */
+.md table {
+  border: 2px solid #435;
+  margin: 0.5rem 1rem;
+}
+.md table thead {
+  border: 2px solid #435;
+}
+.md table thead th {
+  padding: 0.4rem 0.8rem;
+  font-weight: normal;
+  background: #546;
+  color: #fff;
+}
+.md table tbody td {
+  padding: 0.5rem 0.8rem 0.3rem 0.8rem;
 }
 
 /* コード */

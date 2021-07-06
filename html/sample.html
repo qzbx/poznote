@@ -43,7 +43,7 @@
 <h4 id="h4-見出し">h4 見出し</h4>
 <p>小さい見出し<br>ときどき使う</p>
 <h5 id="h5-見出し">h5 見出し</h5>
-<p>使ったことない</p>
+<p>地の文と同じ（位置が違うだけ）</p>
 <h6 id="h6-見出し">h6 見出し</h6>
 <p>使ったことない<br>スタイルは h5 と同じ</p>
 <h2 id="地の文と装飾">地の文と装飾</h2>
@@ -97,7 +97,7 @@
 </li>
 </ul>
 <h3 id="ordered">Ordered</h3>
-<p>番号つきのリスト<br>スタイルはレベル３まで定義してある<br>ol よりもう1段インデント下げないとうまく変換されないっぽい？</p>
+<p>番号つきのリスト<br>スタイルはレベル３まで定義してある<br>ul よりもう1段インデント下げないとうまく変換されないっぽい？</p>
 <ol>
 <li>レベル 1<ol>
 <li>レベル 2<br>リスト内改行<br>リスト内改行<ol>
@@ -149,6 +149,44 @@
 </ol>
 </li>
 </ul>
+<h2 id="図表">図表</h2>
+<h3 id="表">表</h3>
+<p>表</p>
+<table>
+<thead>
+<tr>
+<th align="center">項目</th>
+<th align="center">項目</th>
+<th align="center">項目</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A</td>
+<td align="center">B</td>
+<td align="center">C</td>
+</tr>
+<tr>
+<td align="center">D</td>
+<td align="center">E</td>
+<td align="center">F</td>
+</tr>
+</tbody></table>
+<p>枠線ほしいときに使ったりもする（というかこっちのほうが多い）</p>
+<table>
+<thead>
+<tr>
+<th align="left">定義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">定義内容<br />枠内で改行したいときは br を使わないといけない</td>
+</tr>
+<tr>
+<td align="left">.md 側で改行すると別（1個下）のセルになってしまう<br />（td に枠線を適用してないので外見的には構わんが）</td>
+</tr>
+</tbody></table>
+<h3 id="図">図</h3>
+<p>TODO</p>
 <h2 id="その他">その他</h2>
 <h3 id="コードブロック">コードブロック</h3>
 <p><code>npm run start</code> みたいにインラインでコマンドとか書くのに使ったり，<br>以下のようにスニペット表示っぽく使ったりする<br>ほんとは行数とか表示できるやつでもっとマシな外観にしたい（TODO）</p>
