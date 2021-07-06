@@ -149,8 +149,28 @@
 </ol>
 </li>
 </ul>
-<h2 id="数式">数式</h2>
-<p>$a \neq b \rightarrow \mathcal{C}$</p>
+<h2 id="その他">その他</h2>
+<h3 id="コードブロック">コードブロック</h3>
+<p><code>npm run start</code> みたいにインラインでコマンドとか書くのに使ったり，<br>以下のようにスニペット表示っぽく使ったりする<br>ほんとは行数とか表示できるやつでもっとマシな外観にしたい（TODO）</p>
+<pre><code>use actix_web::{web, App, HttpResponse, HttpServer, Responder};
+
+async fn ping() -&gt; impl Responder { // 通信確認用 API Func
+    HttpResponse::Ok().body(&quot;Pong!&quot;)
+}
+
+#[actix_web::main]
+async fn main() -&gt; std::io::Result&lt;()&gt; {
+    HttpServer::new(|| {
+        App::new()
+            .route(&quot;/ping&quot;, web::get().to(ping))
+    })
+    .bind(&quot;127.0.0.1:8021&quot;)?
+    .run()
+    .await
+}
+</code></pre>
+<h3 id="数式">数式</h3>
+<p>MathJax<br>$\frac{\pi}{2} =<br>  \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =<br>  \sum_{k=0}^{\infty} \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1} =<br>  \prod_{k=1}^{\infty} \frac{4k^2}{4k^2 - 1}<br>$</p>
 
     </article>
   </body>

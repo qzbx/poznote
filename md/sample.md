@@ -124,6 +124,37 @@ ul ol 混合リスト
   1. レベル 2
     リスト内改行
 
-## 数式
-$a \neq b \rightarrow \mathcal{C}$
+## その他
+### コードブロック
+`npm run start` みたいにインラインでコマンドとか書くのに使ったり、
+以下のようにスニペット表示っぽく使ったりする
+ほんとは行数とか表示できるやつでもっとマシな外観にしたい（TODO）
+
+```
+use actix_web::{web, App, HttpResponse, HttpServer, Responder};
+
+async fn ping() -> impl Responder { // 通信確認用 API Func
+    HttpResponse::Ok().body("Pong!")
+}
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| {
+        App::new()
+            .route("/ping", web::get().to(ping))
+    })
+    .bind("127.0.0.1:8021")?
+    .run()
+    .await
+}
+```
+
+
+### 数式
+MathJax
+$\frac{\pi}{2} =
+  \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =
+  \sum_{k=0}^{\infty} \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1} =
+  \prod_{k=1}^{\infty} \frac{4k^2}{4k^2 - 1}
+$
 
