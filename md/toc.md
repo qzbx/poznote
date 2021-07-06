@@ -7,3 +7,4 @@
     1. [リスト](lists.html)
     1. [図表](tables.html)
     1. [その他](others.html)
+1. [ライセンス](license.html)

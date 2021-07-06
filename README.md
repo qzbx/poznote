@@ -35,6 +35,10 @@
 1. ブラウザで `poznote/html` 以下に作成された対応する `(filename).html` を表示する
 1. 見ながら `(filename).md` を編集する
 
+目次は `md/toc.md` を編集する  
+（実際使うときは `toc.md` 以外のサンプルは消しちゃってOK）
+`md/toc.md` ナシでも動くようにしたい（TODO）
+
 ## Reference
 
 - livereloadx <https://nitoyon.github.io/livereloadx/>
