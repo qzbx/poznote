@@ -78,7 +78,7 @@ article.md {
   line-height: 100%;
   font-weight: normal;
   padding: 0.2rem 0 0 0.8rem;
-  margin: 1.2rem 0.0rem 0.4rem 0.2rem;
+  margin: 1.2rem 0.0rem 0.5rem 0.2rem;
   color: #435;
   border-left: 10px solid #ea3;
 }
@@ -106,7 +106,7 @@ article.md {
 
 /* 地の文 */
 .md p {
-  padding: 0.6rem 1.0rem 0.4rem 1.0rem;
+  padding: 0.5rem 1.0rem 0.5rem 1.0rem;
 }
 .md em {
   color: #d70;
@@ -182,7 +182,7 @@ article.md {
   font-family: monospace;
   font-size: 0.9rem;
   line-height: 1.2rem;
-  margin: 0.5rem 1rem;
+  margin: 0.8rem 1rem 1.4rem 1rem;
   padding: 1rem;
   border: 2px solid #102;
 }
