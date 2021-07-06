@@ -79,6 +79,12 @@ article.md {
   font-weight: bold;
 }
 
+/* 引用 */
+.md blockquote {
+  margin: 0.2rem 1.2rem;
+  border-left: .25rem solid #aaa;
+  color: #666;
+}
 
 /* リスト */
 .md ul {
