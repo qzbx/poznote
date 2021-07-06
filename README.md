@@ -40,3 +40,10 @@
 1. ブラウザで `index.html` を開く（まだ作ってない）
 1. `poznote/md` 以下で .md を追加したり編集したりする
 
+---
+## Reference
+
+- livereloadx <https://nitoyon.github.io/livereloadx/>
+- HTML5 Reset Stylesheet <http://html5doctor.com/html-5-reset-stylesheet/>
+
+
