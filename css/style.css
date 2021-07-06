@@ -16,7 +16,11 @@ body {
     "nav   article";
 }
 
-/* サイドバー（TOC） */
+
+/* ============================== */
+/* サイドバー（TOC）              */
+/* ============================== */
+
 nav.toc {
   grid-area: nav;
   padding: 1.2rem 0.4rem;
@@ -33,10 +37,19 @@ nav.toc {
   padding: 0 1rem 0.4rem 1rem;
 }
 
-/* コンテンツ本体大枠 */
+.toc a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/* ============================== */
+/* コンテンツ本体                 */
+/* ============================== */
+
 article.md {
   grid-area: article;
-  padding: 1.5rem 2.0rem;
+  padding: 1.5rem 2.0rem 4rem 2.0rem;
   line-height: 1.65rem;
   color: #102;
   overflow-y: auto;
@@ -105,6 +118,9 @@ article.md {
 .md em strong {
   color: #d70;
   font-weight: bold;
+}
+.md a {
+  color: #54d;
 }
 
 /* 引用 */
@@ -178,5 +194,9 @@ article.md {
   line-height: 1.2rem;
 }
 
+/* 水平線 */
+.md hr {
+  border-top: 2px solid #879;
+}
 
 
