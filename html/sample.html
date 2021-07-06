@@ -30,8 +30,15 @@
     </script>
   </head>
   <body>
-    <article class="md">
-<h1 id="サンプルページ">サンプルページ</h1>
+<nav class="toc"><ol>
+  <li>サンプル1
+  <ol><li>ほげ</li></ol>
+  </li>
+  <li>サンプル2</li>
+  <li>サンプル3</li>
+</ol>
+
+</nav><article id="md" class="md"><h1 id="サンプルページ">サンプルページ</h1>
 <p>見栄え等々のサンプル</p>
 <h2 id="タイトル・見出し">タイトル・見出し</h2>
 <h1 id="h1-タイトル">h1 タイトル</h1>
@@ -97,10 +104,12 @@
 </li>
 </ul>
 <h3 id="ordered">Ordered</h3>
-<p>番号つきのリスト<br>スタイルはレベル３まで定義してある<br>ul よりもう1段インデント下げないとうまく変換されないっぽい？</p>
+<p>番号つきのリスト<br>ul よりもう1段インデント下げないとうまく変換されないっぽい？</p>
 <ol>
 <li>レベル 1<ol>
 <li>レベル 2<br>リスト内改行<br>リスト内改行<ol>
+<li>レベル 3</li>
+<li>レベル 3</li>
 <li>レベル 3</li>
 </ol>
 </li>
@@ -117,7 +126,7 @@
 </li>
 </ol>
 <h3 id="混合">混合</h3>
-<p>ul ol 混合リスト<br>スタイルはレベル３まで定義してある<br>これも ol の中はインデントもう1段下げないとうまく変換されないので注意</p>
+<p>ul ol 混合リスト<br>これも ol の中はインデントもう1段下げないとうまく変換されないので注意</p>
 <ul>
 <li>レベル 1<ol>
 <li>レベル 2<br>リスト内改行<br>リスト内改行<ul>
@@ -209,37 +218,33 @@ async fn main() -&gt; std::io::Result&lt;()&gt; {
 </code></pre>
 <h3 id="数式">数式</h3>
 <p>MathJax<br>$\frac{\pi}{2} =<br>  \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =<br>  \sum_{k=0}^{\infty} \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1} =<br>  \prod_{k=1}^{\infty} \frac{4k^2}{4k^2 - 1}<br>$</p>
-
-    </article>
+</article>
   </body>
   <script>
     // リロードの直前にスクロール量を保存する
     window.onbeforeunload = () => {
-      sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
-      const bottom = document.body.clientHeight - window.innerHeight; // not just fit
-      if (window.pageYOffset >= bottom) { // 一番下までいってた場合は追従する
+      const elm = document.getElementById("md");
+      sessionStorage.setItem("poznote-scroll", String(elm.scrollTop));
+      const bottom = elm.scrollHeight - elm.clientHeight; // not just fit
+      if (elm.scrollTop >= bottom) { // 一番下までいってた場合は追従する
         sessionStorage.setItem("poznote-bottom", "true");
       }
     };
   </script>
   <script defer>
     // リロード時に直前のスクロール量を復元する
+    const elm = document.getElementById("md");
     const y = sessionStorage.getItem("poznote-scroll");
     const b = sessionStorage.getItem("poznote-bottom");
     if (y) {
-      const msec = "500"; // 待機時間（msec）
       if (b) { // 一番下までスクロールされてた場合は追従する
-        const bottom = document.body.clientHeight;
-        setTimeout(() => {
-          window.scrollTo(0, bottom)
-          sessionStorage.removeItem("poznote-scroll");
-          sessionStorage.removeItem("poznote-bottom");
-        }, msec);
+        const bottom = elm.scrollHeight;
+        elm.scroll(0, bottom)
+        sessionStorage.removeItem("poznote-scroll");
+        sessionStorage.removeItem("poznote-bottom");
       } else {
-        setTimeout(() => {
-          window.scrollTo(0, y)
-          sessionStorage.removeItem("poznote-scroll");
-        }, msec);
+        elm.scroll(0, y);
+        sessionStorage.removeItem("poznote-scroll");
       }
     }
   </script>

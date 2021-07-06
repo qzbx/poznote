@@ -3,7 +3,7 @@ const marked = require("marked");
 const chokidar = require("chokidar");
 
 // md から生成する html の <body> までの前半部分
-const header = `<!DOCTYPE html>
+const body_bef = `<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -35,48 +35,47 @@ const header = `<!DOCTYPE html>
     </script>
   </head>
   <body>
-    <article class="md">
 `;
+const nav_bef = `<nav class="toc">`;
+const nav_aft = `</nav>`;
+const article_bef = `<article id="md" class="md">`;
+const article_aft = `</article>`;
 
 // md から生成する html の </body> 以降の後半部分
-const footer = `
-    </article>
+const body_aft = `
   </body>
   <script>
     // リロードの直前にスクロール量を保存する
     window.onbeforeunload = () => {
-      sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
-      const bottom = document.body.clientHeight - window.innerHeight; // not just fit
-      if (window.pageYOffset >= bottom) { // 一番下までいってた場合は追従する
+      const elm = document.getElementById("md");
+      sessionStorage.setItem("poznote-scroll", String(elm.scrollTop));
+      const bottom = elm.scrollHeight - elm.clientHeight; // not just fit
+      if (elm.scrollTop >= bottom) { // 一番下までいってた場合は追従する
         sessionStorage.setItem("poznote-bottom", "true");
       }
     };
   </script>
   <script defer>
     // リロード時に直前のスクロール量を復元する
+    const elm = document.getElementById("md");
     const y = sessionStorage.getItem("poznote-scroll");
     const b = sessionStorage.getItem("poznote-bottom");
     if (y) {
-      const msec = "500"; // 待機時間（msec）
       if (b) { // 一番下までスクロールされてた場合は追従する
-        const bottom = document.body.clientHeight;
-        setTimeout(() => {
-          window.scrollTo(0, bottom)
-          sessionStorage.removeItem("poznote-scroll");
-          sessionStorage.removeItem("poznote-bottom");
-        }, msec);
+        const bottom = elm.scrollHeight;
+        elm.scroll(0, bottom)
+        sessionStorage.removeItem("poznote-scroll");
+        sessionStorage.removeItem("poznote-bottom");
       } else {
-        setTimeout(() => {
-          window.scrollTo(0, y)
-          sessionStorage.removeItem("poznote-scroll");
-        }, msec);
+        elm.scroll(0, y);
+        sessionStorage.removeItem("poznote-scroll");
       }
     }
   </script>
 </html>`;
 
 
-// chokidar 初期化
+// watcher 初期設定
 const watcher = chokidar.watch('./md/',{ // ./md 以下を監視
     ignored:/[\/\\]\./,
     persistent: true,
@@ -87,12 +86,15 @@ const md2html = (name) => {
   fs.readFile("./md/" + name + ".md", "utf-8", (e, raw) => { // ファイル読込
     if (e) throw e;
     const md = raw.replace(/、/g, "，").replace(/。/g, "．"); // 点丸をピリカンに置換
-    const body = marked(md, { // md から html の <body> 部分を生成
+    const article = marked(md, { // md から html の <article> 部分を生成
       breaks: true, // 行末で改行する
     });
-    const html = header + body + footer;
-    // console.log(html);
-    fs.writeFile("./html/" + name + ".html", html, (e) => {if (e) throw e;}); // 出力
+    fs.readFile("./toc.html", "utf-8", (e, nav) => { // TOC 読込
+      if (e) throw e;
+      const html = body_bef + nav_bef + nav + nav_aft + 
+        article_bef + article + article_aft + body_aft;
+      fs.writeFile("./html/" + name + ".html", html, (e) => {if (e) throw e;}); // 出力
+    })
   });
 };
 
