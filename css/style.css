@@ -65,6 +65,61 @@ article.md {
 
 /* 地の文 */
 .md p {
-  padding: 0.6rem 0.8rem 0.4rem 0.8rem;
+  padding: 0.6rem 1.0rem 0.4rem 1.0rem;
 }
+
+/* リスト */
+.md ul {
+  padding-left: 2.4rem;
+  list-style-type: disc;
+}
+.md ol {
+  padding-left: 2.4rem;
+}
+.md ul ul {
+  padding-left: 1.4rem;
+  list-style-type: circle;
+}
+.md ul ol {
+  padding-left: 1.4rem;
+}
+.md ol ul {
+  padding-left: 1.4rem;
+  list-style-type: circle;
+}
+.md ol ol {
+  padding-left: 1.4rem;
+}
+.md ul ul ul {
+  padding-left: 1.4rem;
+  list-style-type: circle;
+}
+.md ul ul ol {
+  padding-left: 1.4rem;
+}
+.md ul ol ul {
+  padding-left: 1.4rem;
+  list-style-type: circle;
+}
+.md ul ol ol {
+  padding-left: 1.4rem;
+}
+.md ol ul ul {
+  padding-left: 1.4rem;
+  list-style-type: circle;
+}
+.md ol ul ol {
+  padding-left: 1.4rem;
+}
+.md ol ol ul {
+  padding-left: 1.4rem;
+  list-style-type: circle;
+}
+.md ol ol ol {
+  padding-left: 1.4rem;
+}
+
+
+
+
 
