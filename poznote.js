@@ -76,7 +76,7 @@ const body_aft = `
 
 
 // watcher 初期設定
-const watcher = chokidar.watch('./md/',{ // ./md 以下を監視
+const watcher = chokidar.watch('./md/', { // ./md 以下を監視
     ignored:/[\/\\]\./,
     persistent: true,
 });
@@ -89,36 +89,53 @@ const md2html = (name) => {
     const article = marked(md, { // md から html の <article> 部分を生成
       breaks: true, // 行末で改行する
     });
-    fs.readFile("./toc.html", "utf-8", (e, nav) => { // TOC 読込
+    fs.readFile("./md/toc.md", "utf-8", (e, toc_raw) => { // TOC 読込
       if (e) throw e;
+      const toc = toc_raw.replace(/、/g, "，").replace(/。/g, "．");
+      const nav = marked(toc, { // <nav> 部分を生成
+        breaks: true, // 行末で改行する
+      });
       const html = body_bef + nav_bef + nav + nav_aft + 
         article_bef + article + article_aft + body_aft;
       fs.writeFile("./html/" + name + ".html", html, (e) => {if (e) throw e;}); // 出力
-    })
+    });
   });
 };
 
 // 起動時に ./md/ 以下を全部見て変換・出力する
-fs.readdir("./md/", (e, files) => {
-  if (e) throw e;
-  for (const path of files) {
-    console.log("[Check] " + "md/" + path);
-    // ここの path は ./md/ 以下の部分のパス（先頭に md/ は付いてない）ので注意
-    md2html(path.split(".")[0]); // hoge.md -> hoge を渡す
-  }
-  console.log("Successfully initialized");
-})
+const md2html_all = () => {
+  fs.readdir("./md/", (e, files) => {
+    if (e) throw e;
+    for (const path of files) {
+      console.log("[Check] " + "md/" + path);
+      // ここの path は ./md/ 以下の部分のパス（先頭に md/ は付いてない）ので注意
+      md2html(path.split(".")[0]); // hoge.md -> hoge を渡す
+    }
+  });
+};
+
+// ==================== 実行 ====================
+// 初期化
+md2html_all(); // 最初 /md 内を総なめする
 
 // 監視開始
 watcher.on("ready", () => {
     console.log("PozNote is running...");
     watcher.on("add", (path) => { // ファイル追加時
         console.log("[Add]   " + path);
-        md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
+        if (path === "md/toc.md") { // toc.md が編集された場合
+          md2html_all(); // 全部再レンダリングする
+        } else { // それ以外（通常）
+          md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
+        };
     });
 
     watcher.on("change", (path) => { // ファイル編集時
         console.log("[Edit]  " + path);
-        md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
+        if (path === "md/toc.md") { // toc.md が編集された場合
+          md2html_all(); // 全部再レンダリングする
+        } else { // それ以外（通常）
+          md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
+        };
     });
 });
