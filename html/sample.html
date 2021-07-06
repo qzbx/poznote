@@ -1,47 +1,111 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <script>
-    // mathjax の設定
-    MathJax = {
-      chtml: {
-        matchFontHeight: false
-      },
-      tex: {
-        inlineMath: [['$', '$']]
-      }
-    };
-  </script>
-  <script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-  </script>
-  <script>
-    // livereload の設定
-    document.write(
-      '<script src="http://' + 
-      (location.host || 'localhost').split(':')[0] + 
-      ':35729/livereload.js?snipver=1"></' + 
-      'script>'
-    )
-  </script>
-</head>
-<body>
-<h1 id="さんぷる">さんぷる</h1>
-<p>空白なし改行<br>空白なし改行<br>空白なし改行<br>空白なし改行</p>
-<p>りすと</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script>
+      // mathjax の設定
+      MathJax = {
+        chtml: {
+          matchFontHeight: false
+        },
+        tex: {
+          inlineMath: [['$', '$']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <script>
+      // livereload の設定
+      document.write(
+        '<script src="http://' + 
+        (location.host || 'localhost').split(':')[0] + 
+        ':35729/livereload.js?snipver=1"></' + 
+        'script>'
+      )
+    </script>
+  </head>
+  <body>
+    <article class="md">
+<h1 id="サンプルページ">サンプルページ</h1>
+<p>見栄え等々のサンプル</p>
+<h2 id="見出し">見出し</h2>
+<h1 id="h1-タイトル">h1 タイトル</h1>
+<p>タイトル用</p>
+<h2 id="h2-デカ見出し">h2 デカ見出し</h2>
+<p>セクションタイトル用</p>
+<h3 id="h3-見出し">h3 見出し</h3>
+<p>セクション内容区分け用</p>
+<h4 id="h4-見出し">h4 見出し</h4>
+<p>小さい見出し<br>ときどき使う</p>
+<h5 id="h5-見出し">h5 見出し</h5>
+<p>使ったことない</p>
+<h6 id="h6-見出し">h6 見出し</h6>
+<p>使ったことない<br>スタイルは h5 と同じ</p>
+<h2 id="地の文">地の文</h2>
+<p>地の文．<br>breaks オプションが有効になっているので，.md 側での改行が .html 側にも反映される（br タグが挿入される）．<br>.md での点丸は .html 側では自動でピリカンに変更される（選択可能にしたい TODO）．</p>
+<p>間に空行を挟むと br ではなく p の終端になる．<br>p タグは上下にちょっと余白が入る．</p>
+<h2 id="リスト">リスト</h2>
+<h3 id="unordered">Unordered</h3>
+<p>番号なしのリスト</p>
 <ul>
-<li>UL<ul>
-<li>UL</li>
+<li>レベル 1<ul>
+<li>レベル 2<br>リスト内改行<br>リスト内改行<ul>
+<li>レベル 3<ul>
+<li>レベル 4</li>
 </ul>
 </li>
-<li>UL<ul>
-<li>UL</li>
-<li>UL</li>
 </ul>
 </li>
-<li>UL</li>
+<li>レベル 2<br>リスト内改行</li>
+<li>レベル 2<ul>
+<li>レベル 3</li>
 </ul>
+</li>
+</ul>
+</li>
+<li>レベル 1<ul>
+<li>レベル 2<br>リスト内改行</li>
+</ul>
+</li>
+</ul>
+<p>地の文</p>
+<ul>
+<li>レベル 1<ul>
+<li>レベル 2</li>
+<li>レベル 2</li>
+</ul>
+</li>
+<li>レベル 1<ul>
+<li>レベル 2</li>
+</ul>
+</li>
+</ul>
+<h3 id="ordered">Ordered</h3>
+<p>番号つきのリスト</p>
+<ol>
+<li>レベル 1</li>
+<li>レベル 2<br>リスト内改行<br>リスト内改行    1. レベル 3<ol>
+<li>レベル 4</li>
+</ol>
+</li>
+<li>レベル 2<br>リスト内改行</li>
+<li>レベル 2    1. レベル 3</li>
+<li>レベル 1</li>
+<li>レベル 2<br>リスト内改行</li>
+</ol>
+<p>地の文</p>
+<ol>
+<li>レベル 1</li>
+<li>レベル 2</li>
+<li>レベル 2</li>
+<li>レベル 1</li>
+<li>レベル 2</li>
+</ol>
 <h2 id="数式">数式</h2>
 <p>$a \neq b \rightarrow \mathcal{C}$</p>
 <h2 id="置換用">置換用</h2>
@@ -54,36 +118,37 @@
 <p>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！<br>長いやつスクロールリセットしないでほしい！</p>
 <p>末尾<br>末尾<br>末尾</p>
 
-    <script>
-      // リロードの直前にスクロール量を保存する
-      window.onbeforeunload = () => {
-        sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
-        const bottom = document.body.clientHeight - window.innerHeight; // not just fit
-        if (window.pageYOffset >= bottom) { // 一番下までいってた場合は追従する
-          sessionStorage.setItem("poznote-bottom", "true");
-        }
-      };
-    </script>
-    <script defer>
-      // リロード時に直前のスクロール量を復元する
-      const y = sessionStorage.getItem("poznote-scroll");
-      const b = sessionStorage.getItem("poznote-bottom");
-      if (y) {
-        const msec = "500"; // 待機時間（msec）
-        if (b) { // 一番下までスクロールされてた場合は追従する
-          const bottom = document.body.clientHeight;
-          setTimeout(() => {
-            window.scrollTo(0, bottom)
-            sessionStorage.removeItem("poznote-scroll");
-            sessionStorage.removeItem("poznote-bottom");
-          }, msec);
-        } else {
-          setTimeout(() => {
-            window.scrollTo(0, y)
-            sessionStorage.removeItem("poznote-scroll");
-          }, msec);
-        }
-      }
-    </script>
+    </article>
   </body>
+  <script>
+    // リロードの直前にスクロール量を保存する
+    window.onbeforeunload = () => {
+      sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
+      const bottom = document.body.clientHeight - window.innerHeight; // not just fit
+      if (window.pageYOffset >= bottom) { // 一番下までいってた場合は追従する
+        sessionStorage.setItem("poznote-bottom", "true");
+      }
+    };
+  </script>
+  <script defer>
+    // リロード時に直前のスクロール量を復元する
+    const y = sessionStorage.getItem("poznote-scroll");
+    const b = sessionStorage.getItem("poznote-bottom");
+    if (y) {
+      const msec = "500"; // 待機時間（msec）
+      if (b) { // 一番下までスクロールされてた場合は追従する
+        const bottom = document.body.clientHeight;
+        setTimeout(() => {
+          window.scrollTo(0, bottom)
+          sessionStorage.removeItem("poznote-scroll");
+          sessionStorage.removeItem("poznote-bottom");
+        }, msec);
+      } else {
+        setTimeout(() => {
+          window.scrollTo(0, y)
+          sessionStorage.removeItem("poznote-scroll");
+        }, msec);
+      }
+    }
+  </script>
 </html>
