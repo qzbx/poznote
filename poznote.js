@@ -35,42 +35,44 @@ const header = `<!DOCTYPE html>
     </script>
   </head>
   <body>
+    <article class="md">
 `;
 
 // md から生成する html の </body> 以降の後半部分
 const footer = `
-    <script>
-      // リロードの直前にスクロール量を保存する
-      window.onbeforeunload = () => {
-        sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
-        const bottom = document.body.clientHeight - window.innerHeight; // not just fit
-        if (window.pageYOffset >= bottom) { // 一番下までいってた場合は追従する
-          sessionStorage.setItem("poznote-bottom", "true");
-        }
-      };
-    </script>
-    <script defer>
-      // リロード時に直前のスクロール量を復元する
-      const y = sessionStorage.getItem("poznote-scroll");
-      const b = sessionStorage.getItem("poznote-bottom");
-      if (y) {
-        const msec = "500"; // 待機時間（msec）
-        if (b) { // 一番下までスクロールされてた場合は追従する
-          const bottom = document.body.clientHeight;
-          setTimeout(() => {
-            window.scrollTo(0, bottom)
-            sessionStorage.removeItem("poznote-scroll");
-            sessionStorage.removeItem("poznote-bottom");
-          }, msec);
-        } else {
-          setTimeout(() => {
-            window.scrollTo(0, y)
-            sessionStorage.removeItem("poznote-scroll");
-          }, msec);
-        }
-      }
-    </script>
+    </article>
   </body>
+  <script>
+    // リロードの直前にスクロール量を保存する
+    window.onbeforeunload = () => {
+      sessionStorage.setItem("poznote-scroll", String(window.pageYOffset));
+      const bottom = document.body.clientHeight - window.innerHeight; // not just fit
+      if (window.pageYOffset >= bottom) { // 一番下までいってた場合は追従する
+        sessionStorage.setItem("poznote-bottom", "true");
+      }
+    };
+  </script>
+  <script defer>
+    // リロード時に直前のスクロール量を復元する
+    const y = sessionStorage.getItem("poznote-scroll");
+    const b = sessionStorage.getItem("poznote-bottom");
+    if (y) {
+      const msec = "500"; // 待機時間（msec）
+      if (b) { // 一番下までスクロールされてた場合は追従する
+        const bottom = document.body.clientHeight;
+        setTimeout(() => {
+          window.scrollTo(0, bottom)
+          sessionStorage.removeItem("poznote-scroll");
+          sessionStorage.removeItem("poznote-bottom");
+        }, msec);
+      } else {
+        setTimeout(() => {
+          window.scrollTo(0, y)
+          sessionStorage.removeItem("poznote-scroll");
+        }, msec);
+      }
+    }
+  </script>
 </html>`;
 
 
