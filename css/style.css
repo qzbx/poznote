@@ -5,13 +5,54 @@
 :root {
   font-size: 100%;
   font-family: sans-serif;
-  color: #102;
 }
 
-/* コンテンツ本体大枠 */
+/* 画面全体（グリッド設定） */
+body {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 250px 1fr;
+  grid-template-areas:
+    "nav   article";
+}
+
+
+/* ============================== */
+/* サイドバー（TOC）              */
+/* ============================== */
+
+nav.toc {
+  grid-area: nav;
+  padding: 1.2rem 0.4rem;
+  font-size: 0.9rem;
+  line-height: 2.0rem;
+  color: #fff;
+  background: #657;
+  overflow-y: auto;
+}
+
+.toc h1 {
+  font-weight: normal;
+  font-size: 1rem;
+  padding: 0 1rem 0.4rem 1rem;
+}
+
+.toc a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/* ============================== */
+/* コンテンツ本体                 */
+/* ============================== */
+
 article.md {
-  padding: 1.5rem 2.0rem;
-  line-height: 1.6rem;
+  grid-area: article;
+  padding: 1.5rem 2.0rem 4rem 2.0rem;
+  line-height: 1.65rem;
+  color: #102;
+  overflow-y: auto;
 }
 
 /* 以降省略して article.md -> .md で記述 */
@@ -37,7 +78,7 @@ article.md {
   line-height: 100%;
   font-weight: normal;
   padding: 0.2rem 0 0 0.8rem;
-  margin: 1.2rem 0.0rem 0.4rem 0.2rem;
+  margin: 1.2rem 0.0rem 0.5rem 0.2rem;
   color: #435;
   border-left: 10px solid #ea3;
 }
@@ -65,7 +106,7 @@ article.md {
 
 /* 地の文 */
 .md p {
-  padding: 0.6rem 1.0rem 0.4rem 1.0rem;
+  padding: 0.5rem 1.0rem 0.5rem 1.0rem;
 }
 .md em {
   color: #d70;
@@ -78,6 +119,9 @@ article.md {
   color: #d70;
   font-weight: bold;
 }
+.md a {
+  color: #54d;
+}
 
 /* 引用 */
 .md blockquote {
@@ -87,54 +131,32 @@ article.md {
 }
 
 /* リスト */
-.md ul {
+.md ul, .toc ul {
   padding-left: 2.4rem;
   list-style-type: disc;
 }
-.md ol {
+.md ol, .toc ol {
   padding-left: 2.4rem;
 }
-.md ul ul {
+.md ul ul, .toc ul ul {
   padding-left: 1.4rem;
   list-style-type: circle;
 }
-.md ul ol {
+.md ul ol, .toc ul ol {
   padding-left: 1.4rem;
 }
-.md ol ul {
+.md ol ul, .toc ol ul {
   padding-left: 1.4rem;
   list-style-type: circle;
 }
-.md ol ol {
+.md ol ol, .toc ol ol {
   padding-left: 1.4rem;
+  list-style-type: lower-roman;
 }
-.md ul ul ul {
+
+.md ol ol ol, .toc ol ol ol {
   padding-left: 1.4rem;
-  list-style-type: circle;
-}
-.md ul ul ol {
-  padding-left: 1.4rem;
-}
-.md ul ol ul {
-  padding-left: 1.4rem;
-  list-style-type: circle;
-}
-.md ul ol ol {
-  padding-left: 1.4rem;
-}
-.md ol ul ul {
-  padding-left: 1.4rem;
-  list-style-type: circle;
-}
-.md ol ul ol {
-  padding-left: 1.4rem;
-}
-.md ol ol ul {
-  padding-left: 1.4rem;
-  list-style-type: circle;
-}
-.md ol ol ol {
-  padding-left: 1.4rem;
+  list-style-type: lower-latin;
 }
 
 /* 図表 */
@@ -160,7 +182,7 @@ article.md {
   font-family: monospace;
   font-size: 0.9rem;
   line-height: 1.2rem;
-  margin: 0.5rem 1rem;
+  margin: 0.8rem 1rem 1.4rem 1rem;
   padding: 1rem;
   border: 2px solid #102;
 }
@@ -172,5 +194,9 @@ article.md {
   line-height: 1.2rem;
 }
 
+/* 水平線 */
+.md hr {
+  border-top: 2px solid #879;
+}
 
 

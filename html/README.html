@@ -42,8 +42,40 @@
 </ol>
 </li>
 </ol>
-</nav><article id="md" class="md"><h1 id="サンプルページ">サンプルページ</h1>
-<p>見栄え等々のサンプル<br>ここに全部書いても良かったけど TOC のデモのためにファイル分けしてる</p>
+</nav><article id="md" class="md"><h1 id="poznote">PozNote</h1>
+<p>.md で快適にノートを取りたい<br>複数の .md ファイルをひとつのプロジェクトとして管理・プレビューしたい</p>
+<h2 id="feature">Feature</h2>
+<ul>
+<li>.md をリアルタイムで .html に変換する</li>
+<li>ブラウザで表示している .html をホットリロードする</li>
+<li>リロード時にスクロール位置が狂わない（一番下のときはそのまま追従する）</li>
+<li>MathJax 対応</li>
+<li>点丸をピリカンに置換（選択可能にしたい TODO）</li>
+<li>サイドバーにファイル横断の目次を表示する</li>
+</ul>
+<h2 id="仕組み">仕組み</h2>
+<p><code>./md</code> 以下を監視して，<code>./md/(sample).md</code> が変更されたら自動で <code>./html/(sample).html</code> を作成する</p>
+<h2 id="つかいかた">つかいかた</h2>
+<h3 id="初期設定">初期設定</h3>
+<pre><code>% sudo npm i -g livereloadx
+% git clone https://github.com/qzbx/poznote.git
+% cd poznote
+% npm i
+</code></pre>
+<h3 id="起動">起動</h3>
+<pre><code>% npm run start
+</code></pre>
+<h3 id="編集">編集</h3>
+<ol>
+<li><code>poznote/md</code> 以下に <code>(filename).md</code> を作成する</li>
+<li>ブラウザで <code>poznote/html</code> 以下に作成された対応する <code>(filename).html</code> を表示する</li>
+<li>見ながら <code>(filename).md</code> を編集する</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>livereloadx <a href="https://nitoyon.github.io/livereloadx/">https://nitoyon.github.io/livereloadx/</a></li>
+<li>HTML5 Reset Stylesheet <a href="http://html5doctor.com/html-5-reset-stylesheet/">http://html5doctor.com/html-5-reset-stylesheet/</a></li>
+</ul>
 </article>
   </body>
   <script>
