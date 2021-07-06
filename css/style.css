@@ -5,7 +5,6 @@
 :root {
   font-size: 100%;
   font-family: sans-serif;
-  color: #102;
 }
 
 /* 画面全体（グリッド設定） */
@@ -20,16 +19,26 @@ body {
 /* サイドバー（TOC） */
 nav.toc {
   grid-area: nav;
-  background: plum;
-  line-height: 1.6rem;
+  padding: 1.2rem 0.4rem;
+  font-size: 0.9rem;
+  line-height: 2.0rem;
+  color: #fff;
+  background: #657;
   overflow-y: auto;
+}
+
+.toc h1 {
+  font-weight: normal;
+  font-size: 1rem;
+  padding: 0 1rem 0.4rem 1rem;
 }
 
 /* コンテンツ本体大枠 */
 article.md {
   grid-area: article;
   padding: 1.5rem 2.0rem;
-  line-height: 1.6rem;
+  line-height: 1.65rem;
+  color: #102;
   overflow-y: auto;
 }
 
