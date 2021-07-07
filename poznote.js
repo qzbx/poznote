@@ -10,29 +10,9 @@ const body_bef = `<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <script>
-      // mathjax の設定
-      MathJax = {
-        chtml: {
-          matchFontHeight: false
-        },
-        tex: {
-          inlineMath: [['$', '$']]
-        }
-      };
-    </script>
-    <script id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-    </script>
-    <script>
-      // livereload の設定
-      document.write(
-        '<script src="http://' + 
-        (location.host || 'localhost').split(':')[0] + 
-        ':35729/livereload.js?snipver=1"></' + 
-        'script>'
-      )
-    </script>
+    <script src="../js/mathjax_setting.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="../js/livereload_setting.js.js"></script>
   </head>
   <body>
 `;
@@ -44,36 +24,8 @@ const article_aft = `</article>`;
 // md から生成する html の </body> 以降の後半部分
 const body_aft = `
   </body>
-  <script>
-    // リロードの直前にスクロール量を保存する
-    window.onbeforeunload = () => {
-      const elm = document.getElementById("md");
-      sessionStorage.setItem("poznote-scroll", String(elm.scrollTop));
-      sessionStorage.setItem("poznote-uri", String(location.href));
-      const bottom = elm.scrollHeight - elm.clientHeight; // not just fit
-      if (elm.scrollTop >= bottom) { // 一番下までいってた場合は追従する
-        sessionStorage.setItem("poznote-bottom", "true");
-      }
-    };
-  </script>
-  <script defer>
-    // リロード時に直前のスクロール量を復元する
-    const elm = document.getElementById("md");
-    const y = sessionStorage.getItem("poznote-scroll");
-    const b = sessionStorage.getItem("poznote-bottom");
-    const uri = sessionStorage.getItem("poznote-uri");
-    if (y && location.href === uri) {
-      if (b) { // 一番下までスクロールされてた場合は追従する
-        const bottom = elm.scrollHeight;
-        elm.scroll(0, bottom)
-      } else {
-        elm.scroll(0, y);
-      }
-    }
-    sessionStorage.removeItem("poznote-scroll");
-    sessionStorage.removeItem("poznote-bottom");
-    sessionStorage.removeItem("poznote-uri");
-  </script>
+  <script src="../js/scroll_save.js"></script>
+  <script defer src="../js/scroll_restore.js"></script>
 </html>`;
 
 
