@@ -63,6 +63,7 @@
     window.onbeforeunload = () => {
       const elm = document.getElementById("md");
       sessionStorage.setItem("poznote-scroll", String(elm.scrollTop));
+      sessionStorage.setItem("poznote-uri", String(location.href));
       const bottom = elm.scrollHeight - elm.clientHeight; // not just fit
       if (elm.scrollTop >= bottom) { // 一番下までいってた場合は追従する
         sessionStorage.setItem("poznote-bottom", "true");
@@ -74,16 +75,17 @@
     const elm = document.getElementById("md");
     const y = sessionStorage.getItem("poznote-scroll");
     const b = sessionStorage.getItem("poznote-bottom");
-    if (y) {
+    const uri = sessionStorage.getItem("poznote-uri");
+    if (y && location.href === uri) {
       if (b) { // 一番下までスクロールされてた場合は追従する
         const bottom = elm.scrollHeight;
         elm.scroll(0, bottom)
-        sessionStorage.removeItem("poznote-scroll");
-        sessionStorage.removeItem("poznote-bottom");
       } else {
         elm.scroll(0, y);
-        sessionStorage.removeItem("poznote-scroll");
       }
     }
+    sessionStorage.removeItem("poznote-scroll");
+    sessionStorage.removeItem("poznote-bottom");
+    sessionStorage.removeItem("poznote-uri");
   </script>
 </html>
