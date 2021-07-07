@@ -25,7 +25,7 @@ nav.toc {
   grid-area: nav;
   padding: 1.2rem 0.4rem;
   font-size: 0.9rem;
-  line-height: 2.0rem;
+  line-height: 185%;
   color: #fff;
   background: #657;
   overflow-y: auto;
@@ -33,7 +33,15 @@ nav.toc {
 
 .toc h1 {
   font-weight: normal;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  line-height: 140%;
+  padding: 0 1rem 0.4rem 1rem;
+}
+
+.toc h2 {
+  font-weight: normal;
+  font-size: 1.0rem;
+  line-height: 140%;
   padding: 0 1rem 0.4rem 1rem;
 }
 
@@ -50,7 +58,7 @@ nav.toc {
 article.md {
   grid-area: article;
   padding: 1.5rem 2.0rem 4rem 2.0rem;
-  line-height: 1.65rem;
+  line-height: 165%;
   color: #102;
   overflow-y: auto;
 }
@@ -59,14 +67,14 @@ article.md {
 /* 見出し */
 .md h1 {
   font-size: 1.6rem;
-  line-height: 100%;
+  line-height: 140%;
   font-weight: bold;
   padding: 1.0rem 0.0rem 0.4rem 0.0rem;
   color: #657;
 }
 .md h2 {
   font-size: 1.4rem;
-  line-height: 100%;
+  line-height: 140%;
   font-weight: normal;
   padding: 2.0rem 0.8rem 0.4rem 0.8rem;
   margin: 0 0 0.5rem  0;
@@ -75,30 +83,30 @@ article.md {
 }
 .md h3 {
   font-size: 1.3rem;
-  line-height: 100%;
+  line-height: 140%;
   font-weight: normal;
   padding: 0.2rem 0 0 0.8rem;
-  margin: 1.2rem 0.0rem 0.5rem 0.2rem;
+  margin: 1.0rem 0.0rem 0.5rem 0.2rem;
   color: #435;
   border-left: 10px solid #ea3;
 }
 .md h4 {
   font-size: 1.2rem;
-  line-height: 100%;
+  line-height: 140%;
   font-weight: normal;
   padding: 1.0rem 0.0rem 0.2rem 0.4rem;
   color: #324;
 }
 .md h5 {
   font-size: 1.0rem;
-  line-height: 100%;
+  line-height: 140%;
   font-weight: normal;
   padding: 1.0rem 0.0rem 0.2rem 0.4rem;
   color: #102;
 }
 .md h6 {
   font-size: 1.0rem;
-  line-height: 100%;
+  line-height: 140%;
   font-weight: normal;
   padding: 1.0rem 0.0rem 0.2rem 0.4rem;
   color: #102;
