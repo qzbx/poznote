@@ -114,7 +114,7 @@ article.md {
 
 /* 地の文 */
 .md p {
-  padding: 0.5rem 1.0rem 0.5rem 1.0rem;
+  padding: 0.5rem 1.0rem;
 }
 .md em {
   color: #d70;
@@ -134,8 +134,14 @@ article.md {
 /* 引用 */
 .md blockquote {
   margin: 0.2rem 1.2rem;
-  border-left: .25rem solid #888;
+  border-left: 0.25rem solid #888;
   color: #444;
+}
+.md blockquote :first-child {
+  padding-top: 0.3rem;
+}
+.md blockquote :last-child {
+  padding-bottom: 0.3rem;
 }
 
 /* リスト */
