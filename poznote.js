@@ -12,7 +12,7 @@ const body_bef = `<!DOCTYPE html>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <script src="../js/mathjax_setting.js"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-    <script src="../js/livereload_setting.js.js"></script>
+    <script src="../js/livereload_setting.js"></script>
   </head>
   <body>
 `;
