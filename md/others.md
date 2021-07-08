@@ -37,9 +37,23 @@ async fn main() -> std::io::Result<()> {
 
 ### 数式
 MathJax
+Dollar sign で囲めば tex の記法で書ける
 $\frac{\pi}{2} =
   \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =
   \sum_{k=0}^{\infty} \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1} =
   \prod_{k=1}^{\infty} \frac{4k^2}{4k^2 - 1}
+$
+
+マクロとかの定義は `js/mathjax_setting.js` 内に設定を書けばよい
+
+数式内のバックスラッシュは2つ書いて1つ分と解釈される？っぽいので注意する
+改行するには4つも書く必要がある
+
+$
+H =
+\begin{pmatrix}
+a & b \\\\
+c & d
+\end{pmatrix}
 $
 
