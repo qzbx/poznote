@@ -76,7 +76,7 @@ md2html_all(); // 最初 /md 内を総なめする
 watcher.on("ready", () => {
     console.log("PozNote is running...");
     watcher.on("add", (path) => { // ファイル追加時
-        console.log("[Add]   " + path);
+        console.log("[Add] " + path);
         if (path === "md/toc.md") { // toc.md が編集された場合
           md2html_all(); // 全部再レンダリングする
         } else { // それ以外（通常）
@@ -85,11 +85,17 @@ watcher.on("ready", () => {
     });
 
     watcher.on("change", (path) => { // ファイル編集時
-        console.log("[Edit]  " + path);
+        console.log("[Edit] " + path);
         if (path === "md/toc.md") { // toc.md が編集された場合
           md2html_all(); // 全部再レンダリングする
         } else { // それ以外（通常）
           md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
         };
+    });
+
+    watcher.on("unlink", (path) => { // ファイル削除時
+        console.log("[Delete] " + path);
+        // 対応する .html を削除する
+        fs.unlink("html/" + path.slice(3).split(".")[0] + ".html", (_) => {});
     });
 });
