@@ -20,12 +20,12 @@ const body_bef = `<!DOCTYPE html>
   <body>
 `;
 const nav_bef = `<input id="nav-check" class="nav-btn" type="checkbox">
-      <label for="nav-check" class="nav-label"><i class="fas fa-angle-double-right fa-4x" style="color:orange;"></i></label>
+      <label for="nav-check" class="nav-label"><i class="fas fa-angle-double-right fa-3x" style="color:orange;"></i></label>
       <nav class="nav">
 `;
 const nav_aft = `</nav>`;
-const article_bef = `<article id="md" class="md">`;
-const article_aft = `</article>`;
+const article_bef = `<div class="wrapper"><article id="md" class="md">`;
+const article_aft = `</article></div>`;
 
 // md から生成する html の </body> 以降の後半部分
 const body_aft = `

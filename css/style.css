@@ -86,17 +86,24 @@
 /* コンテンツ本体                 */
 /* ============================== */
 
-.md {
+.wrapper {
   padding: 1.2rem 2.4rem 4rem 2.4rem;
-  line-height: 165%;
-  color: #102;
   overflow-y: auto;
   transition: .4s;
+  display: flex;
+  justify-content: center;
 }
 
 /* サイドバー開時 */
-.nav-btn:checked ~ .md {
+.nav-btn:checked ~ .wrapper {
   padding-left: calc(250px + 2.4rem);
+}
+
+.md {
+  line-height: 165%;
+  color: #102;
+  width: 90%;
+  max-width: 800px;
 }
 
 /* 見出し */
