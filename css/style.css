@@ -7,6 +7,14 @@
   font-family: sans-serif;
 }
 
+body::-webkit-scrollbar {
+  background: #fff;
+  width: 14px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #657;
+}
 
 /* ============================== */
 /* 開閉ボタン
@@ -93,6 +101,15 @@
   opacity: 1;
 }
 
+.nav::-webkit-scrollbar {
+  background: #657;
+  width: 12px;
+}
+
+.nav::-webkit-scrollbar-thumb {
+  background: #435;
+}
+
 .nav h1 {
   font-weight: normal;
   font-size: 1.2rem;
@@ -151,10 +168,11 @@
   font-size: 1.4rem;
   line-height: 140%;
   font-weight: normal;
-  padding: 1.5rem 0.8rem 0.4rem 0.8rem;
-  margin: 0 0 0.5rem  0;
+  padding: 0.5rem 1.0rem 0.25rem 1.0rem;
+  margin: 1.2rem 0 0.5rem  0;
   color: #546;
   border-bottom: 2px solid #657;
+  border-top: 2px solid #657;
 }
 .md h3 {
   font-size: 1.3rem;
@@ -302,5 +320,6 @@
 .md hr {
   border-top: 2px solid #879;
 }
+
 
 
