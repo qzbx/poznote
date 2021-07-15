@@ -10,13 +10,17 @@ const body_bef = `<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <script src="../js/mathjax_setting.js"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <script src="../js/livereload_setting.js"></script>
   </head>
   <body>
 `;
-const nav_bef = `<nav class="toc">`;
+const nav_bef = `<input id="nav-check" class="nav-btn" type="checkbox">
+      <label for="nav-check" class="nav-label"><i class="fas fa-angle-double-right fa-4x" style="color:orange;"></i></label>
+      <nav class="nav">
+`;
 const nav_aft = `</nav>`;
 const article_bef = `<article id="md" class="md">`;
 const article_aft = `</article>`;

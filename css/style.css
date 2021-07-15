@@ -7,13 +7,28 @@
   font-family: sans-serif;
 }
 
-/* 画面全体（グリッド設定） */
-body {
-  display: grid;
-  height: 100vh;
-  grid-template-columns: 250px 1fr;
-  grid-template-areas:
-    "nav   article";
+
+/* ============================== */
+/* 開閉ボタン
+/* ============================== */
+
+/* サイドバー開閉のチェックボックス */
+.nav-btn {
+  display: none;
+}
+
+/* サイドバー開閉ボタン */
+.nav-label {
+  cursor: pointer;
+  position: fixed;
+  bottom: 10px;
+  left: 15px;
+  z-index: 10;
+  transition: .4s;
+}
+
+.nav-btn:checked ~ .nav-label {
+  left: 265px;
 }
 
 
@@ -21,24 +36,38 @@ body {
 /* サイドバー（TOC）              */
 /* ============================== */
 
-nav.toc {
-  grid-area: nav;
+.nav {
+  width: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
   padding: 1.2rem 0.4rem;
   font-size: 0.9rem;
   line-height: 185%;
   color: #fff;
   background: #657;
+  height: 100vh;
   overflow-y: auto;
+  z-index: 5;
+  transition: .4s;
+  box-sizing: border-box;
 }
 
-.toc h1 {
+/* サイドバー開時 */
+.nav-btn:checked ~ .nav {
+  width: 250px;
+  visibility: visible;
+}
+
+.nav h1 {
   font-weight: normal;
   font-size: 1.2rem;
   line-height: 140%;
   padding: 0 1rem 0.4rem 1rem;
 }
 
-.toc h2 {
+.nav h2 {
   font-weight: normal;
   font-size: 1.02rem;
   line-height: 140%;
@@ -47,7 +76,7 @@ nav.toc {
   border-bottom: 1px solid #fff;
 }
 
-.toc a {
+.nav a {
   color: #fff;
   text-decoration: none;
 }
@@ -57,15 +86,19 @@ nav.toc {
 /* コンテンツ本体                 */
 /* ============================== */
 
-article.md {
-  grid-area: article;
-  padding: 1.5rem 2.0rem 4rem 2.0rem;
+.md {
+  padding: 1.2rem 2.4rem 4rem 2.4rem;
   line-height: 165%;
   color: #102;
   overflow-y: auto;
+  transition: .4s;
 }
 
-/* 以降省略して article.md -> .md で記述 */
+/* サイドバー開時 */
+.nav-btn:checked ~ .md {
+  padding-left: calc(250px + 2.4rem);
+}
+
 /* 見出し */
 .md h1 {
   font-size: 1.6rem;
@@ -78,7 +111,7 @@ article.md {
   font-size: 1.4rem;
   line-height: 140%;
   font-weight: normal;
-  padding: 2.0rem 0.8rem 0.4rem 0.8rem;
+  padding: 1.5rem 0.8rem 0.4rem 0.8rem;
   margin: 0 0 0.5rem  0;
   color: #546;
   border-bottom: 2px solid #657;
@@ -150,41 +183,41 @@ article.md {
 }
 
 /* リスト */
-.md ul, .toc ul {
+.md ul, .nav ul {
   padding-left: 2.4rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   list-style-type: disc;
 }
-.md ol, .toc ol {
+.md ol, .nav ol {
   padding-left: 2.4rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
-.md ul ul, .toc ul ul {
+.md ul ul, .nav ul ul {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
   list-style-type: circle;
 }
-.md ul ol, .toc ul ol {
+.md ul ol, .nav ul ol {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
 }
-.md ol ul, .toc ol ul {
+.md ol ul, .nav ol ul {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
   list-style-type: circle;
 }
-.md ol ol, .toc ol ol {
+.md ol ol, .nav ol ol {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.md ol ol ol, .toc ol ol ol {
+.md ol ol ol, .nav ol ol ol {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
