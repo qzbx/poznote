@@ -120,14 +120,17 @@ article.md {
 }
 .md em {
   color: #d70;
+  font-style: normal;
 }
 .md strong {
   color: #546;
   font-weight: bold;
+  font-style: normal;
 }
 .md em strong {
   color: #d70;
   font-weight: bold;
+  font-style: normal;
 }
 .md a {
   color: #54d;
@@ -179,14 +182,12 @@ article.md {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
-  list-style-type: lower-roman;
 }
 
 .md ol ol ol, .toc ol ol ol {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
-  list-style-type: lower-latin;
 }
 
 /* 図表 */
