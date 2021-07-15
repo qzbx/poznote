@@ -23,12 +23,43 @@
   position: fixed;
   bottom: 10px;
   left: 15px;
-  z-index: 10;
   transition: .4s;
+  z-index: 10;
+}
+
+.nav-open {
+  visibility: visible;
+  opacity: 1;
+  transition: .4s;
+  background: #fff;
+}
+
+.nav-close {
+  visibility: hidden;
+  opacity: 0;
+  transition: .4s;
+}
+
+.fa-angle-double-right {
+  color: #657;
+}
+
+.fa-angle-double-left {
+  color: #657;
 }
 
 .nav-btn:checked ~ .nav-label {
   left: 265px;
+}
+
+.nav-btn:checked ~ .nav-open {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.nav-btn:checked ~ .nav-close {
+  visibility: visible;
+  opacity: 1;
 }
 
 
@@ -39,6 +70,7 @@
 .nav {
   width: 0;
   visibility: hidden;
+  opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -58,6 +90,7 @@
 .nav-btn:checked ~ .nav {
   width: 250px;
   visibility: visible;
+  opacity: 1;
 }
 
 .nav h1 {

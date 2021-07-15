@@ -20,7 +20,8 @@ const body_bef = `<!DOCTYPE html>
   <body>
 `;
 const nav_bef = `<input id="nav-check" class="nav-btn" type="checkbox">
-      <label for="nav-check" class="nav-label"><i class="fas fa-angle-double-right fa-3x" style="color:orange;"></i></label>
+      <label for="nav-check" class="nav-label nav-open"><i class="fas fa-angle-double-right fa-3x"></i></label>
+      <label for="nav-check" class="nav-label nav-close"><i class="fas fa-angle-double-left fa-3x"></i></label>
       <nav class="nav">
 `;
 const nav_aft = `</nav>`;
