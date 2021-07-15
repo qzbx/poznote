@@ -7,13 +7,67 @@
   font-family: sans-serif;
 }
 
-/* 画面全体（グリッド設定） */
-body {
-  display: grid;
-  height: 100vh;
-  grid-template-columns: 250px 1fr;
-  grid-template-areas:
-    "nav   article";
+body::-webkit-scrollbar {
+  background: #fff;
+  width: 14px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #657;
+}
+
+/* ============================== */
+/* 開閉ボタン
+/* ============================== */
+
+/* サイドバー開閉のチェックボックス */
+.nav-btn {
+  display: none;
+}
+
+/* サイドバー開閉ボタン */
+.nav-label {
+  cursor: pointer;
+  position: fixed;
+  bottom: 10px;
+  left: 15px;
+  transition: .4s;
+  z-index: 10;
+}
+
+.nav-open {
+  visibility: visible;
+  opacity: 1;
+  transition: .4s;
+  background: #fff;
+}
+
+.nav-close {
+  visibility: hidden;
+  opacity: 0;
+  transition: .4s;
+}
+
+.fa-angle-double-right {
+  color: #657;
+}
+
+.fa-angle-double-left {
+  color: #657;
+}
+
+.nav-btn:checked ~ .nav-label {
+  left: 265px;
+}
+
+.nav-btn:checked ~ .nav-open {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.nav-btn:checked ~ .nav-close {
+  visibility: visible;
+  opacity: 1;
 }
 
 
@@ -21,31 +75,58 @@ body {
 /* サイドバー（TOC）              */
 /* ============================== */
 
-nav.toc {
-  grid-area: nav;
+.nav {
+  width: 0;
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
   padding: 1.2rem 0.4rem;
   font-size: 0.9rem;
   line-height: 185%;
   color: #fff;
   background: #657;
+  height: 100vh;
   overflow-y: auto;
+  z-index: 5;
+  transition: .4s;
+  box-sizing: border-box;
 }
 
-.toc h1 {
+/* サイドバー開時 */
+.nav-btn:checked ~ .nav {
+  width: 250px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.nav::-webkit-scrollbar {
+  background: #657;
+  width: 12px;
+}
+
+.nav::-webkit-scrollbar-thumb {
+  background: #435;
+}
+
+.nav h1 {
   font-weight: normal;
   font-size: 1.2rem;
   line-height: 140%;
   padding: 0 1rem 0.4rem 1rem;
 }
 
-.toc h2 {
+.nav h2 {
   font-weight: normal;
-  font-size: 1.0rem;
+  font-size: 1.02rem;
   line-height: 140%;
-  padding: 0 1rem 0.4rem 1rem;
+  margin: 1rem 0.5rem 0.1rem 0.5rem;
+  padding: 0 0.5rem 0.2rem 0.5rem;
+  border-bottom: 1px solid #fff;
 }
 
-.toc a {
+.nav a {
   color: #fff;
   text-decoration: none;
 }
@@ -55,15 +136,26 @@ nav.toc {
 /* コンテンツ本体                 */
 /* ============================== */
 
-article.md {
-  grid-area: article;
-  padding: 1.5rem 2.0rem 4rem 2.0rem;
-  line-height: 165%;
-  color: #102;
+.wrapper {
+  padding: 1.2rem 2.4rem 4rem 2.4rem;
   overflow-y: auto;
+  transition: .4s;
+  display: flex;
+  justify-content: center;
 }
 
-/* 以降省略して article.md -> .md で記述 */
+/* サイドバー開時 */
+.nav-btn:checked ~ .wrapper {
+  padding-left: calc(250px + 2.4rem);
+}
+
+.md {
+  line-height: 165%;
+  color: #102;
+  width: 90%;
+  max-width: 800px;
+}
+
 /* 見出し */
 .md h1 {
   font-size: 1.6rem;
@@ -76,10 +168,11 @@ article.md {
   font-size: 1.4rem;
   line-height: 140%;
   font-weight: normal;
-  padding: 2.0rem 0.8rem 0.4rem 0.8rem;
-  margin: 0 0 0.5rem  0;
+  padding: 0.5rem 1.0rem 0.25rem 1.0rem;
+  margin: 1.2rem 0 0.5rem  0;
   color: #546;
   border-bottom: 2px solid #657;
+  border-top: 2px solid #657;
 }
 .md h3 {
   font-size: 1.3rem;
@@ -118,14 +211,17 @@ article.md {
 }
 .md em {
   color: #d70;
+  font-style: normal;
 }
 .md strong {
   color: #546;
   font-weight: bold;
+  font-style: normal;
 }
 .md em strong {
   color: #d70;
   font-weight: bold;
+  font-style: normal;
 }
 .md a {
   color: #54d;
@@ -145,46 +241,44 @@ article.md {
 }
 
 /* リスト */
-.md ul, .toc ul {
+.md ul, .nav ul {
   padding-left: 2.4rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   list-style-type: disc;
 }
-.md ol, .toc ol {
+.md ol, .nav ol {
   padding-left: 2.4rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
-.md ul ul, .toc ul ul {
+.md ul ul, .nav ul ul {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
   list-style-type: circle;
 }
-.md ul ol, .toc ul ol {
+.md ul ol, .nav ul ol {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
 }
-.md ol ul, .toc ol ul {
+.md ol ul, .nav ol ul {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
   list-style-type: circle;
 }
-.md ol ol, .toc ol ol {
+.md ol ol, .nav ol ol {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
-  list-style-type: lower-roman;
 }
 
-.md ol ol ol, .toc ol ol ol {
+.md ol ol ol, .nav ol ol ol {
   padding-left: 1.4rem;
   padding-top: 0;
   padding-bottom: 0;
-  list-style-type: lower-latin;
 }
 
 /* 図表 */
@@ -226,5 +320,6 @@ article.md {
 .md hr {
   border-top: 2px solid #879;
 }
+
 
 

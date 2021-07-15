@@ -10,16 +10,23 @@ const body_bef = `<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <script src="../js/mathjax_setting.js"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+    <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     <script src="../js/livereload_setting.js"></script>
   </head>
   <body>
 `;
-const nav_bef = `<nav class="toc">`;
+const nav_bef = `<input id="nav-check" class="nav-btn" type="checkbox">
+      <label for="nav-check" class="nav-label nav-open"><i class="fas fa-angle-double-right fa-3x"></i></label>
+      <label for="nav-check" class="nav-label nav-close"><i class="fas fa-angle-double-left fa-3x"></i></label>
+      <nav class="nav">
+`;
 const nav_aft = `</nav>`;
-const article_bef = `<article id="md" class="md">`;
-const article_aft = `</article>`;
+const article_bef = `<div class="wrapper"><article id="md" class="md">`;
+const article_aft = `</article></div>`;
 
 // md から生成する html の </body> 以降の後半部分
 const body_aft = `
@@ -51,7 +58,15 @@ const md2html = (name) => {
       });
       const html = body_bef + nav_bef + nav + nav_aft + 
         article_bef + article + article_aft + body_aft;
-      fs.writeFile("./html/" + name + ".html", html, (e) => {if (e) throw e;}); // 出力
+
+      // 書き込み
+      try { fs.statSync("./html/"); } catch(e) { // ./html/ が存在するか確認
+        if (e.code === "ENOENT") { // no such file or dir ./html/ が存在しない
+          fs.mkdir("html", _ => {}) // ./html/ を作成
+        } else if (e) {throw e};
+      }
+      fs.writeFile("./html/" + name + ".html", html, e => {if (e) throw e;}); // 出力
+
     });
   });
 };
@@ -76,7 +91,7 @@ md2html_all(); // 最初 /md 内を総なめする
 watcher.on("ready", () => {
     console.log("PozNote is running...");
     watcher.on("add", (path) => { // ファイル追加時
-        console.log("[Add]   " + path);
+        console.log("[Add] " + path);
         if (path === "md/toc.md") { // toc.md が編集された場合
           md2html_all(); // 全部再レンダリングする
         } else { // それ以外（通常）
@@ -85,11 +100,17 @@ watcher.on("ready", () => {
     });
 
     watcher.on("change", (path) => { // ファイル編集時
-        console.log("[Edit]  " + path);
+        console.log("[Edit] " + path);
         if (path === "md/toc.md") { // toc.md が編集された場合
           md2html_all(); // 全部再レンダリングする
         } else { // それ以外（通常）
           md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
         };
+    });
+
+    watcher.on("unlink", (path) => { // ファイル削除時
+        console.log("[Delete] " + path);
+        // 対応する .html を削除する
+        fs.unlink("html/" + path.slice(3).split(".")[0] + ".html", _ => {});
     });
 });

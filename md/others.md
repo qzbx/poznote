@@ -36,7 +36,7 @@ async fn main() -> std::io::Result<()> {
 ---
 
 ### 数式
-MathJax
+#### MathJax
 Dollar sign で囲めば tex の記法で書ける
 $\frac{\pi}{2} =
   \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =
@@ -56,4 +56,22 @@ a & b \\\\
 c & d
 \end{pmatrix}
 $
+
+#### Tikz 
+script タグで埋め込むことで Tikz の記法で図も描ける
+
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \draw (0,0) circle (1in);
+  \end{tikzpicture}
+</script>
+
+```
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \draw (0,0) circle (1in);
+  \end{tikzpicture}
+</script>
+```
+
 
