@@ -51,7 +51,15 @@ const md2html = (name) => {
       });
       const html = body_bef + nav_bef + nav + nav_aft + 
         article_bef + article + article_aft + body_aft;
-      fs.writeFile("./html/" + name + ".html", html, (e) => {if (e) throw e;}); // 出力
+
+      // 書き込み
+      try { fs.statSync("./html/"); } catch(e) { // ./html/ が存在するか確認
+        if (e.code === "ENOENT") { // no such file or dir ./html/ が存在しない
+          fs.mkdir("html", _ => {}) // ./html/ を作成
+        } else if (e) {throw e};
+      }
+      fs.writeFile("./html/" + name + ".html", html, e => {if (e) throw e;}); // 出力
+
     });
   });
 };
@@ -96,6 +104,6 @@ watcher.on("ready", () => {
     watcher.on("unlink", (path) => { // ファイル削除時
         console.log("[Delete] " + path);
         // 対応する .html を削除する
-        fs.unlink("html/" + path.slice(3).split(".")[0] + ".html", (_) => {});
+        fs.unlink("html/" + path.slice(3).split(".")[0] + ".html", _ => {});
     });
 });
