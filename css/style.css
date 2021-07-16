@@ -13,7 +13,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #657;
+  background: #445;
 }
 
 /* ============================== */
@@ -39,7 +39,6 @@ body::-webkit-scrollbar-thumb {
   visibility: visible;
   opacity: 1;
   transition: .4s;
-  background: #fff;
 }
 
 .nav-close {
@@ -107,7 +106,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .nav::-webkit-scrollbar-thumb {
-  background: #435;
+  background: #445;
 }
 
 .nav h1 {
@@ -137,16 +136,15 @@ body::-webkit-scrollbar-thumb {
 /* ============================== */
 
 .wrapper {
-  padding: 1.2rem 2.4rem 4rem 2.4rem;
   overflow-y: auto;
   transition: .4s;
   display: flex;
   justify-content: center;
+  background: #fff;
 }
-
 /* サイドバー開時 */
 .nav-btn:checked ~ .wrapper {
-  padding-left: calc(250px + 2.4rem);
+  padding-left: 250px;
 }
 
 .md {
@@ -154,6 +152,21 @@ body::-webkit-scrollbar-thumb {
   color: #102;
   width: 90%;
   max-width: 800px;
+  padding: 1.2rem 2.4rem 4rem 2.4rem;
+  background: #fff;
+}
+
+/* レスポンシブ */
+@media screen and (min-width: 1160px) {
+  .wrapper {
+    background: #bdbbbf;
+  }
+  .md {
+    padding: 1.2rem 5.4rem 4rem 5.4rem;
+  }
+  body::-webkit-scrollbar {
+    background: #bdbbbf;
+  }
 }
 
 /* 見出し */
@@ -168,20 +181,25 @@ body::-webkit-scrollbar-thumb {
   font-size: 1.4rem;
   line-height: 140%;
   font-weight: normal;
-  padding: 0.5rem 1.0rem 0.25rem 1.0rem;
-  margin: 1.2rem 0 0.5rem  0;
-  color: #546;
-  border-bottom: 2px solid #657;
-  border-top: 2px solid #657;
+  padding: 0.6rem 1.4rem 0.3rem 1.4rem;
+  margin: 2.0rem 0 0.6rem  0;
+  color: #fff;
+  background: #657;
+}
+.md h1 + h2 {
+  margin-top: 1.2rem;
 }
 .md h3 {
   font-size: 1.3rem;
   line-height: 140%;
   font-weight: normal;
   padding: 0.2rem 0 0 0.8rem;
-  margin: 1.0rem 0.0rem 0.5rem 0.2rem;
+  margin: 1.8rem 0.0rem 0.5rem 0.2rem;
   color: #435;
   border-left: 10px solid #ea3;
+}
+.md h2 + h3 {
+  margin-top: 1.2rem;
 }
 .md h4 {
   font-size: 1.2rem;
@@ -283,16 +301,16 @@ body::-webkit-scrollbar-thumb {
 
 /* 図表 */
 .md table {
-  border: 2px solid #435;
-  margin: 0.5rem 1rem;
+  border: 2px solid #445;
+  margin: 0.5rem 1.4rem;
 }
 .md table thead {
-  border: 2px solid #435;
+  border: 2px solid #445;
 }
 .md table thead th {
   padding: 0.4rem 0.8rem;
   font-weight: normal;
-  background: #546;
+  background: #918897;
   color: #fff;
 }
 .md table tbody td {
