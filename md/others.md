@@ -60,11 +60,14 @@ $
 #### Tikz 
 script タグで埋め込むことで Tikz の記法で図も描ける
 
+<div class="fig">
 <script type="text/tikz">
   \begin{tikzpicture}
     \draw (0,0) circle (1in);
   \end{tikzpicture}
 </script>
+<p>キャプション</p>
+</div>
 
 ```
 <script type="text/tikz">

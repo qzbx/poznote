@@ -317,6 +317,16 @@ body::-webkit-scrollbar-thumb {
   padding: 0.5rem 0.8rem 0.3rem 0.8rem;
 }
 
+.md .fig {
+  padding: 1rem 2rem 0rem 2rem;
+  width: fit-content;
+  text-align: center;
+}
+
+.md .fig p {
+  font-size: 0.9rem;
+}
+
 /* コード */
 .md pre {
   font-family: monospace;
