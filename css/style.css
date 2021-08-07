@@ -205,8 +205,11 @@ body::-webkit-scrollbar-thumb {
   font-size: 1.2rem;
   line-height: 140%;
   font-weight: normal;
-  padding: 1.0rem 0.0rem 0.2rem 0.4rem;
+  margin: 0 0.4rem 0.1rem 0.4rem;
+  padding: 1.0rem 0.6rem 0.0rem 0.6rem;
   color: #324;
+  width: fit-content;
+  border-bottom: 2px solid #657;
 }
 .md h5 {
   font-size: 1.0rem;
@@ -261,14 +264,14 @@ body::-webkit-scrollbar-thumb {
 /* リスト */
 .md ul, .nav ul {
   padding-left: 2.4rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
   list-style-type: disc;
 }
 .md ol, .nav ol {
   padding-left: 2.4rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
 }
 .md ul ul, .nav ul ul {
   padding-left: 1.4rem;
@@ -302,7 +305,13 @@ body::-webkit-scrollbar-thumb {
 /* 図表 */
 .md table {
   border: 2px solid #445;
-  margin: 0.5rem 1.4rem;
+  margin: 2rem 1.4rem 0.5rem 1.4rem;
+}
+.md p + table {
+  margin-top: 0.5rem;
+}
+.md ul + table, .md ol + table {
+  margin-top: 0.7rem;
 }
 .md table thead {
   border: 2px solid #445;
@@ -315,6 +324,30 @@ body::-webkit-scrollbar-thumb {
 }
 .md table tbody td {
   padding: 0.5rem 0.8rem 0.3rem 0.8rem;
+}
+
+.md figure {
+  padding: 1rem 2rem 0rem 2rem;
+  width: fit-content;
+  text-align: center;
+}
+.md figcaption {
+  padding: 0.5rem 1.0rem;
+  font-size: 0.9rem;
+}
+
+.md .MathJax {
+  font-size: 0.9rem;
+}
+
+.md .alg {
+  font-size: 0.9rem;
+  line-height: 150%;
+  margin-top: -0.6rem;
+  color: #444;
+}
+.md .alg .MathJax {
+  font-size: 0.8rem;
 }
 
 /* コード */
