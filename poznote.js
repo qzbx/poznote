@@ -1,4 +1,6 @@
-const fs = require("fs");
+// const fs = require("fs");
+const fs = require("fs-extra");
+const path = require("path");
 const marked = require("marked");
 const chokidar = require("chokidar");
 
@@ -38,15 +40,15 @@ const body_aft = `
 
 // watcher 初期設定
 const watcher = chokidar.watch('./md/', { // ./md 以下を監視
-    ignored:/[\/\\]\./,
+    ignored:/[\/\\]\./, // ？？？
     persistent: true,
 });
 
 // (name).md を (name).html に変換して ./html 以下に出力
 const md2html = (name) => { 
-  fs.readFile("./md/" + name + ".md", "utf-8", (e, raw) => { // ファイル読込
+  fs.readFile("./md/" + name + ".md", "utf-8", (e, md) => { // ファイル読込
     if (e) throw e;
-    const md = raw.replace(/、/g, "，").replace(/。/g, "．"); // 点丸をピリカンに置換
+    md = md.replace(/、/g, "，").replace(/。/g, "．"); // 点丸をピリカンに置換
     const article = marked(md, { // md から html の <article> 部分を生成
       breaks: true, // 行末で改行する
     });
@@ -56,8 +58,13 @@ const md2html = (name) => {
       const nav = marked(toc, { // <nav> 部分を生成
         breaks: true, // 行末で改行する
       });
-      const html = body_bef + nav_bef + nav + nav_aft + 
-        article_bef + article + article_aft + body_aft;
+
+      // html 生成
+      const depth = name.split("/").length; // 階層深さ
+      const html = (body_bef + nav_bef + nav + nav_aft + 
+        article_bef + article + article_aft + body_aft)
+        // 階層深度に応じて /js /css /html への相対パスを上書きする
+        .replace(/\.\.\//g, "../".repeat(depth));
 
       // 書き込み
       try { fs.statSync("./html/"); } catch(e) { // ./html/ が存在するか確認
@@ -65,27 +72,34 @@ const md2html = (name) => {
           fs.mkdir("html", _ => {}) // ./html/ を作成
         } else if (e) {throw e};
       }
-      fs.writeFile("./html/" + name + ".html", html, e => {if (e) throw e;}); // 出力
+      fs.outputFile("./html/" + name + ".html", html, e => {if (e) throw e;}); // 出力
 
     });
   });
 };
 
 // 起動時に ./md/ 以下を全部見て変換・出力する
-const md2html_all = () => {
-  fs.readdir("./md/", (e, files) => {
+const md2html_all = (dirpath, callback) => {
+  fs.readdir("./md/" + dirpath, {withFileTypes: true}, (e, files) => {
     if (e) throw e;
-    for (const path of files) {
-      console.log("[Check] " + "md/" + path);
-      // ここの path は ./md/ 以下の部分のパス（先頭に md/ は付いてない）ので注意
-      md2html(path.split(".")[0]); // hoge.md -> hoge を渡す
+    for (const dirent of files) {
+      const fp = path.join(dirpath, dirent.name);
+      if (dirent.isDirectory()) { // path がディレクトリの場合
+        md2html_all(fp, callback); // 再帰的に呼び出す
+      } else { // fp がふつうにファイルの場合
+        if (/\.md$/.test(fp)) { // ".md" 以外は無視
+          console.log("[Check] " + "md/" + fp);
+          // ここの fp は ./md/ 以下の部分のパス（先頭に md/ は付いてない）ので注意
+          callback(fp.split(".")[0]); // hoge/fuga.md -> hoge/fuga を渡す
+        }
+      }
     }
   });
 };
 
 // ==================== 実行 ====================
 // 初期化
-md2html_all(); // 最初 /md 内を総なめする
+md2html_all("", md2html); // 最初 /md 内を総なめする
 
 // 監視開始
 watcher.on("ready", () => {
@@ -94,7 +108,7 @@ watcher.on("ready", () => {
         console.log("[Add] " + path);
         if (path === "md/toc.md") { // toc.md が編集された場合
           md2html_all(); // 全部再レンダリングする
-        } else { // それ以外（通常）
+        } else if (/\.md$/.test(path)) { // それ以外（通常）
           md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
         };
     });
@@ -103,14 +117,16 @@ watcher.on("ready", () => {
         console.log("[Edit] " + path);
         if (path === "md/toc.md") { // toc.md が編集された場合
           md2html_all(); // 全部再レンダリングする
-        } else { // それ以外（通常）
+        } else if (/\.md$/.test(path)) { // それ以外（通常）
           md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
         };
     });
 
     watcher.on("unlink", (path) => { // ファイル削除時
-        console.log("[Delete] " + path);
-        // 対応する .html を削除する
-        fs.unlink("html/" + path.slice(3).split(".")[0] + ".html", _ => {});
+        if (/\.md$/.test(path)) { // ".md" 以外は無視
+          console.log("[Delete] " + path);
+          // 対応する .html を削除する
+          fs.unlink("html/" + path.slice(3).split(".")[0] + ".html", _ => {});
+        }
     });
 });
