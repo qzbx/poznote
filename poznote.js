@@ -46,9 +46,9 @@ const watcher = chokidar.watch('./md/', { // ./md 以下を監視
 
 // (name).md を (name).html に変換して ./html 以下に出力
 const md2html = (name) => { 
-  fs.readFile("./md/" + name + ".md", "utf-8", (e, raw) => { // ファイル読込
+  fs.readFile("./md/" + name + ".md", "utf-8", (e, md) => { // ファイル読込
     if (e) throw e;
-    const md = raw.replace(/、/g, "，").replace(/。/g, "．"); // 点丸をピリカンに置換
+    md = md.replace(/、/g, "，").replace(/。/g, "．"); // 点丸をピリカンに置換
     const article = marked(md, { // md から html の <article> 部分を生成
       breaks: true, // 行末で改行する
     });
@@ -60,10 +60,11 @@ const md2html = (name) => {
       });
 
       // html 生成
-      const html = body_bef + nav_bef + nav + nav_aft + 
-        article_bef + article + article_aft + body_aft;
-      // 相対パスをよしなに上書きする TODO
-      console.log(name);
+      const depth = name.split("/").length; // 階層深さ
+      const html = (body_bef + nav_bef + nav + nav_aft + 
+        article_bef + article + article_aft + body_aft)
+        // 階層深度に応じて /js /css /html への相対パスを上書きする
+        .replace(/\.\.\//g, "../".repeat(depth));
 
       // 書き込み
       try { fs.statSync("./html/"); } catch(e) { // ./html/ が存在するか確認
