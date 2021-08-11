@@ -31,20 +31,20 @@ body::-webkit-scrollbar-thumb {
   position: fixed;
   bottom: 10px;
   left: 15px;
-  transition: .3s;
+  /* transition: .3s; */
   z-index: 10;
 }
 
 .nav-open {
   visibility: visible;
   opacity: 1;
-  transition: .3s;
+  /* transition: .3s; */
 }
 
 .nav-close {
   visibility: hidden;
   opacity: 0;
-  transition: .3s;
+  /* transition: .3s; */
 }
 
 .fa-angle-double-right {
@@ -89,7 +89,7 @@ body::-webkit-scrollbar-thumb {
   height: 100vh;
   overflow-y: auto;
   z-index: 5;
-  transition: .3s;
+  /* transition: .3s; */
   box-sizing: border-box;
 }
 
@@ -210,6 +210,9 @@ body::-webkit-scrollbar-thumb {
   color: #324;
   width: fit-content;
   border-bottom: 2px solid #657;
+}
+.md h3 + h4 {
+  margin-top: -0.4rem;
 }
 .md h5 {
   font-size: 1.0rem;
@@ -337,17 +340,17 @@ body::-webkit-scrollbar-thumb {
 }
 
 .md .MathJax {
-  font-size: 0.9rem;
+  font-size: 90%;
 }
 
 .md .alg {
-  font-size: 0.9rem;
+  font-size: 90%;
   line-height: 150%;
   margin-top: -0.6rem;
   color: #444;
 }
 .md .alg .MathJax {
-  font-size: 0.8rem;
+  font-size: 80%;
 }
 
 /* コード */
