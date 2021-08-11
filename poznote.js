@@ -107,7 +107,7 @@ watcher.on("ready", () => {
     watcher.on("add", (path) => { // ファイル追加時
         console.log("[Add] " + path);
         if (path === "md/toc.md") { // toc.md が編集された場合
-          md2html_all(); // 全部再レンダリングする
+          md2html_all("", md2html); // 全部再レンダリングする
         } else if (/\.md$/.test(path)) { // それ以外（通常）
           md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
         };
@@ -116,7 +116,7 @@ watcher.on("ready", () => {
     watcher.on("change", (path) => { // ファイル編集時
         console.log("[Edit] " + path);
         if (path === "md/toc.md") { // toc.md が編集された場合
-          md2html_all(); // 全部再レンダリングする
+          md2html_all("", md2html); // 全部再レンダリングする
         } else if (/\.md$/.test(path)) { // それ以外（通常）
           md2html(path.slice(3).split(".")[0]); // md/hoge.md -> hoge を渡す
         };
