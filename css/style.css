@@ -34,6 +34,12 @@ body::-webkit-scrollbar-thumb {
   /* transition: .3s; */
   z-index: 10;
 }
+/* 印刷では非表示 */
+@media print {
+  .nav-label {
+    display: none;
+  }
+}
 
 .nav-open {
   visibility: visible;
@@ -148,7 +154,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .md {
-  line-height: 165%;
+  line-height: 175%;
   color: #102;
   width: 90%;
   max-width: 800px;
@@ -202,24 +208,20 @@ body::-webkit-scrollbar-thumb {
   margin-top: 1.2rem;
 }
 .md h4 {
-  font-size: 1.2rem;
+  font-size: 105%;
   line-height: 140%;
-  font-weight: normal;
-  margin: 0 0.4rem 0.1rem 0.4rem;
-  padding: 1.0rem 0.6rem 0.0rem 0.6rem;
-  color: #324;
-  width: fit-content;
-  border-bottom: 2px solid #657;
-}
-.md h3 + h4 {
-  margin-top: -0.4rem;
+  font-weight: bold;
+  margin-top: 1.0rem;
+  margin-left: 0.5rem;
+  color: #657;
 }
 .md h5 {
-  font-size: 1.0rem;
+  font-size: 105%;
   line-height: 140%;
-  font-weight: normal;
-  padding: 1.0rem 0.0rem 0.2rem 0.4rem;
-  color: #102;
+  font-weight: bold;
+  margin-top: 1.0rem;
+  margin-left: 0.5rem;
+  color: #657;
 }
 .md h6 {
   font-size: 1.0rem;
@@ -235,6 +237,7 @@ body::-webkit-scrollbar-thumb {
 }
 .md em {
   color: #d70;
+  font-weight: bold;
   font-style: normal;
 }
 .md strong {
@@ -253,15 +256,25 @@ body::-webkit-scrollbar-thumb {
 
 /* 引用 */
 .md blockquote {
-  margin: 0.2rem 1.2rem;
+  /* margin: 0.4rem 1.4rem; */
   border-left: 0.25rem solid #888;
-  color: #444;
+  color: #555;
 }
-.md blockquote :first-child {
-  padding-top: 0.3rem;
+.md blockquote h4 {
+  margin-top: 0rem;
+  margin-left: 1rem;
+  margin-bottom: -0.2rem;
 }
-.md blockquote :last-child {
-  padding-bottom: 0.3rem;
+.md blockquote h5 {
+  margin-top: 0rem;
+  margin-left: 1rem;
+  margin-bottom: -0.2rem;
+}
+.md blockquote > :first-child {
+  padding-top: 0.6rem;
+}
+.md blockquote > :last-child {
+  padding-bottom: 0.6rem;
 }
 
 /* リスト */
@@ -308,7 +321,7 @@ body::-webkit-scrollbar-thumb {
 /* 図表 */
 .md table {
   border: 2px solid #445;
-  margin: 2rem 1.4rem 0.5rem 1.4rem;
+  margin: 2rem 1.4rem 0.75rem 1.4rem;
 }
 .md p + table {
   margin-top: 0.5rem;
@@ -317,6 +330,7 @@ body::-webkit-scrollbar-thumb {
   margin-top: 0.7rem;
 }
 .md table thead {
+  font-size: 105%;
   border: 2px solid #445;
 }
 .md table thead th {
@@ -346,8 +360,18 @@ body::-webkit-scrollbar-thumb {
 .md .alg {
   font-size: 90%;
   line-height: 150%;
-  margin-top: -0.6rem;
+  margin-left: 1rem;
+  margin-bottom: 1.0rem;
   color: #444;
+}
+.md .alg h4 {
+  padding-left: 0.5rem;
+}
+.md .alg h5 {
+  padding-left: 0.5rem;
+}
+.md .alg p + ol {
+  margin-top: -0.6rem;
 }
 .md .alg .MathJax {
   font-size: 80%;
