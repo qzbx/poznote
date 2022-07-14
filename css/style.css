@@ -3,7 +3,7 @@
 
 /* 全体 */
 :root {
-  font-size: 100%;
+  font-size: 90%;
   font-family: sans-serif;
 }
 
@@ -87,9 +87,9 @@ body::-webkit-scrollbar-thumb {
   position: fixed;
   top: 0;
   left: 0;
-  padding: 1.2rem 0.4rem;
+  padding: 0.4rem 0.4rem;
   font-size: 0.9rem;
-  line-height: 185%;
+  line-height: 155%;
   color: #fff;
   background: #657;
   height: 100vh;
@@ -119,21 +119,32 @@ body::-webkit-scrollbar-thumb {
   font-weight: normal;
   font-size: 1.2rem;
   line-height: 140%;
-  padding: 0 1rem 0.4rem 1rem;
+  margin: 0 1rem 0rem 1rem;
 }
 
 .nav h2 {
   font-weight: normal;
-  font-size: 1.02rem;
+  font-size: 1.04rem;
+  font-weight: bold;
   line-height: 140%;
-  margin: 1rem 0.5rem 0.1rem 0.5rem;
+  margin: 1rem 0.5rem 1.0rem 0.5rem;
   padding: 0 0.5rem 0.2rem 0.5rem;
   border-bottom: 1px solid #fff;
 }
 
 .nav a {
   color: #fff;
-  text-decoration: none;
+}
+
+.nav summary {
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+.nav details {
+  padding-left: 1.4rem;
+}
+.nav details ul, .nav details ol {
+  margin-top: 0;
 }
 
 
@@ -157,7 +168,7 @@ body::-webkit-scrollbar-thumb {
   line-height: 175%;
   color: #102;
   width: 90%;
-  max-width: 800px;
+  /* max-width: 800px; */
   padding: 1.2rem 2.4rem 4rem 2.4rem;
   background: #fff;
 }
@@ -180,7 +191,7 @@ body::-webkit-scrollbar-thumb {
   font-size: 1.6rem;
   line-height: 140%;
   font-weight: bold;
-  padding: 1.0rem 0.0rem 0.4rem 0.0rem;
+  margin: 1.0rem 0.0rem 0rem 0.2rem;
   color: #657;
 }
 .md h2 {
@@ -205,23 +216,40 @@ body::-webkit-scrollbar-thumb {
   border-left: 10px solid #ea3;
 }
 .md h2 + h3 {
-  margin-top: 1.2rem;
+  margin-top: 1.0rem;
 }
 .md h4 {
-  font-size: 105%;
+  font-size: 110%;
   line-height: 140%;
   font-weight: bold;
+  margin: 1.8rem 0.45rem 0 0.45rem;
+  color: #657;
+  padding: 0.2rem 0 0 0.8rem;
+  border-left: solid 3px #657;
+}
+.md h3 + h4 {
   margin-top: 1.0rem;
-  margin-left: 0.5rem;
+}
+.md h4 + * {
+  margin-top: 0.5rem !important;
+}
+/* 動画チャプター用 */
+.md h5 {
+  font-size: 90%;
+  line-height: 140%;
+  font-weight: normal;
+  margin-top: 1.5rem;
+  margin-left: 0.2rem;
   color: #657;
 }
-.md h5 {
-  font-size: 105%;
-  line-height: 140%;
-  font-weight: bold;
-  margin-top: 1.0rem;
-  margin-left: 0.5rem;
-  color: #657;
+.md h5 + h2 {
+  margin-top: 0.8rem;
+}
+.md h5 + h3 {
+  margin-top: 0.8rem;
+}
+.md h5 + h4 {
+  margin-top: 0.8rem;
 }
 .md h6 {
   font-size: 1.0rem;
@@ -233,15 +261,18 @@ body::-webkit-scrollbar-thumb {
 
 /* 地の文 */
 .md p {
-  padding: 0.5rem 1.0rem;
+  margin: 1.0rem 1.0rem 0 1.0rem;
+}
+.md ul + p, .md ol + p {
+  margin-top: 0.2rem;
 }
 .md em {
-  color: #d70;
+  color: #546;
   font-weight: bold;
   font-style: normal;
 }
 .md strong {
-  color: #546;
+  color: #d70;
   font-weight: bold;
   font-style: normal;
 }
@@ -256,91 +287,144 @@ body::-webkit-scrollbar-thumb {
 
 /* 引用 */
 .md blockquote {
-  /* margin: 0.4rem 1.4rem; */
-  border-left: 0.25rem solid #888;
+  margin: 0.7rem 0 0 1.4rem;
+  padding: 0.2rem 0 0.1rem 0;
+  border-left: 0.25rem solid #ddd;
   color: #555;
 }
-.md blockquote h4 {
-  margin-top: 0rem;
-  margin-left: 1rem;
-  margin-bottom: -0.2rem;
+.md blockquote + blockquote {
+  margin-top: 1.2rem;
 }
-.md blockquote h5 {
-  margin-top: 0rem;
-  margin-left: 1rem;
-  margin-bottom: -0.2rem;
+.md blockquote h1 {
+  line-height: 175%;
+  font-size: 1rem;
+  margin: 0 0.8rem;
+  color: #668;
 }
+.md blockquote h1 + * {
+  margin-top: 0.2rem;
+}
+/* quate 内のコンテンツの margin が影響する？ */
 .md blockquote > :first-child {
-  padding-top: 0.6rem;
+  margin-top: 0;
 }
-.md blockquote > :last-child {
-  padding-bottom: 0.6rem;
+.md ul blockquote, ol blockquote {
+  margin-left: 0;
 }
 
-/* リスト */
+/* リスト構造 */
 .md ul, .nav ul {
-  padding-left: 2.4rem;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
+  margin-left: 2.4rem;
+  margin-top: 1.0rem;
+  margin-bottom: 0;
   list-style-type: disc;
 }
 .md ol, .nav ol {
-  padding-left: 2.4rem;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
+  margin-left: 2.4rem;
+  margin-top: 1.0rem;
+  margin-bottom: 0;
+  position: relative;
 }
-.md ul ul, .nav ul ul {
-  padding-left: 1.4rem;
-  padding-top: 0;
-  padding-bottom: 0;
+.md ul > ul, .md ol > ul, .nav ul > ul, .nav ol > ul {
+  margin-left: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 0;
   list-style-type: circle;
 }
-.md ul ol, .nav ul ol {
-  padding-left: 1.4rem;
-  padding-top: 0;
-  padding-bottom: 0;
+.md ul > ol, .md ol > ol, .nav ul > ol, .nav ol > ol {
+  margin-left: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
-.md ol ul, .nav ol ul {
-  padding-left: 1.4rem;
-  padding-top: 0;
-  padding-bottom: 0;
-  list-style-type: circle;
+.md ol + ul, .nav ol + ul, .md ul + ol, .nav ul + ol {
+  margin-top: 0;
 }
-.md ol ol, .nav ol ol {
-  padding-left: 1.4rem;
-  padding-top: 0;
-  padding-bottom: 0;
+.md p + ul, .md p + ol {
+  margin-top: 0.2rem;
 }
 
-.md ol ol ol, .nav ol ol ol {
-  padding-left: 1.4rem;
-  padding-top: 0;
-  padding-bottom: 0;
+/* リスト内 */
+.md li > p, .nav li > p {
+  margin: 0;
+}
+.md li blockquote {
+  margin: 0.5rem 0.2rem;
+}
+.md li blockquote + blockquote {
+  margin-top: 1.0rem;
+}
+.md li > ul, .nav li > ul {
+  margin-left: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: circle;
+}
+.md li > ol, .nav li > ol {
+  margin-left: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* 図表 */
 .md table {
   border: 2px solid #445;
-  margin: 2rem 1.4rem 0.75rem 1.4rem;
+  margin: 0rem 1.0rem;
 }
-.md p + table {
-  margin-top: 0.5rem;
+.md p + table, .md ul + table, .md ol + table, .md blockquote + table {
+  margin-top: 1.5rem;
 }
-.md ul + table, .md ol + table {
-  margin-top: 0.7rem;
+.md table + table {
+  margin-top: 1.5rem;
 }
+/* 一行分 */
 .md table thead {
-  font-size: 105%;
+  font-size: 94%;
   border: 2px solid #445;
 }
+/* 各セル */
 .md table thead th {
-  padding: 0.4rem 0.8rem;
+  padding: 0.3rem 0.8rem 0.0rem 0.8rem;
   font-weight: normal;
   background: #918897;
   color: #fff;
 }
 .md table tbody td {
-  padding: 0.5rem 0.8rem 0.3rem 0.8rem;
+  padding: 0.25rem 0.8rem 0rem 0.8rem;
+  border-left: 2px solid #445;
+}
+
+.md figure {
+  padding: 1rem 2rem 0rem 2rem;
+  width: fit-content;
+  text-align: center;
+}
+.md figcaption {
+  padding: 0.5rem 1.0rem;
+  font-size: 0.9rem;
+}
+
+.md .MathJax {
+  font-size: 90%;
+}
+
+.md .alg {
+  font-size: 90%;
+  line-height: 150%;
+  margin-left: 1rem;
+  margin-bottom: 1.0rem;
+  color: #444;
+}
+.md .alg h4 {
+  padding-left: 0.5rem;
+}
+.md .alg h5 {
+  padding-left: 0.5rem;
+}
+.md .alg p + ol {
+  margin-top: -0.6rem;
+}
+.md .alg .MathJax {
+  font-size: 80%;
 }
 
 .md figure {
@@ -382,16 +466,16 @@ body::-webkit-scrollbar-thumb {
   font-family: monospace;
   font-size: 0.9rem;
   line-height: 1.2rem;
-  margin: 0.8rem 1rem 1.4rem 1rem;
-  padding: 1rem;
-  border: 2px solid #102;
+  margin: 1.0rem;
+  /* padding: 1rem; */
+  /* border: 2px solid #102; */
 }
 .md code {
   padding: 0;
   margin: 0;
   font-family: monospace;
-  font-size: 0.9rem;
-  line-height: 1.2rem;
+  font-size: 1.0rem;
+  line-height: 1.5rem;
 }
 
 /* 水平線 */

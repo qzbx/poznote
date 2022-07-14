@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "livereloadx html/ & node poznote.js",
-    "clean": "rm -r html/*"
+    "clear": "rm -r html/*"
   },
   "dependencies": {
     "chokidar": "^3.5.2",
