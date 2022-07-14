@@ -438,17 +438,27 @@ body::-webkit-scrollbar-thumb {
 }
 
 .md .MathJax {
-  font-size: 0.9rem;
+  font-size: 90%;
 }
 
 .md .alg {
-  font-size: 0.9rem;
+  font-size: 90%;
   line-height: 150%;
-  margin-top: -0.6rem;
+  margin-left: 1rem;
+  margin-bottom: 1.0rem;
   color: #444;
 }
+.md .alg h4 {
+  padding-left: 0.5rem;
+}
+.md .alg h5 {
+  padding-left: 0.5rem;
+}
+.md .alg p + ol {
+  margin-top: -0.6rem;
+}
 .md .alg .MathJax {
-  font-size: 0.8rem;
+  font-size: 80%;
 }
 
 /* コード */
