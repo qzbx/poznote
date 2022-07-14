@@ -5,6 +5,7 @@ const marked = require("marked");
 const chokidar = require("chokidar");
 
 // md から生成する html の <body> までの前半部分
+// 色テーマ：light.css or dark.css 選択
 const body_bef = `<!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -12,7 +13,7 @@ const body_bef = `<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../css/light.css">
+    <link rel="stylesheet" type="text/css" href="../css/dark.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <script src="../js/mathjax_setting.js"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
