@@ -427,6 +427,30 @@ body::-webkit-scrollbar-thumb {
   font-size: 80%;
 }
 
+.md figure {
+  padding: 1rem 2rem 0rem 2rem;
+  width: fit-content;
+  text-align: center;
+}
+.md figcaption {
+  padding: 0.5rem 1.0rem;
+  font-size: 0.9rem;
+}
+
+.md .MathJax {
+  font-size: 0.9rem;
+}
+
+.md .alg {
+  font-size: 0.9rem;
+  line-height: 150%;
+  margin-top: -0.6rem;
+  color: #444;
+}
+.md .alg .MathJax {
+  font-size: 0.8rem;
+}
+
 /* コード */
 .md pre {
   font-family: monospace;

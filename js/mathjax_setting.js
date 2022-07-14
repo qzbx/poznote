@@ -8,24 +8,6 @@ MathJax = {
     processEscapes: true, // \$ で dollar sign になる
     processEnvironments: false, // 数式モード外でも \begin{xxx} .. \end{xxx} が使える
     macros: { // マクロ定義
-      // 関数名
-      mac: "{\\mathsf{MAC}}",
-      cdmac: "{\\mathsf{CDMAC}}",
-      tscdmac: "{\\mathsf{TSCDMAC}}",
-      fn: ["{\\mathsf{#1}}", 1],
-      dgtm: "{\\textsf{DirectGTM}}",
-      xgtm: "{\\textsf{XOR-GTM}}",
-      cmp: "{\\mathsf{cmp}}",
-      diff: "{\\mathsf{diff}}",
-      tag: "{\\mathsf{Tag}}",
-      ver: "{\\mathsf{Ver}}",
-      sver: "{\\mathsf{SVer}}",
-      det: "{\\mathsf{Det}}",
-      kg: "{\\mathsf{KG}}",
-      tvuf: "{\\mathsf{tvuf}}",
-      tsuf: "{\\mathsf{tsuf}}",
-      duf: "{\\mathsf{duf}}",
-      adv: ["{\\mathbf{Adv}^{#1}\_{#2}}", 2],
 
       // Algorithm
       if: "{\\mathbf{if}~\\,}",
@@ -76,31 +58,6 @@ MathJax = {
       Ord: "{O}",
       orac: "{\\mathcal{O}}",
       none: "{\\mathsf{None}}",
-
-      // 他
-      rb: ["{(\\hspace{0.08em}#1\\hspace{0.08em})\\hspace{0.1em}}", 1],
-      cb: ["{\\{\\hspace{0.06em}#1\\hspace{0.06em}\\}}", 1],
-      sb: ["{[\\hspace{0.08em}#1\\hspace{0.08em}]}", 1],
-      bin: "{\\{\\hspace{0.06em}0,\\, 1\\hspace{0.06em}\\}}",
-      size: ["{|\\hspace{0.12em}#1\\hspace{0.12em}|}", 1],
-      mx: ["{\\mathbf{#1}_{{#2},\\,{#3}}}", 3],
-
-      len: ["{|\\hspace{0.12em}#1\\hspace{0.12em}|}", 1],
-      blen: ["{|\\hspace{0.12em}#1\\hspace{0.12em}|\_{{\\mathsf{bit}}}}", 1],
-
-      // ccmac
-      ccmac: "{\\mathsf{CCMAC}}",
-      oract: "{\\mathcal{O}^{\\mathsf{MAC}_K}_{T}}",
-      oracv: "{\\mathcal{O}^{\\mathsf{MAC}_K}_{V}}",
-      oracdt: "{\\mathcal{O}^{\\mathsf{CDMAC}_K}_{T}}",
-      oracdv: "{\\mathcal{O}^{\\mathsf{CDMAC}_K}_{V}}",
-      oracd: "{\\mathcal{O}^{\\mathsf{CDMAC}_K}_{D}}",
-      oracct: "{\\mathcal{O}^{\\mathsf{CCMAC}_K}_{\\mathit{CT}}}",
-      oraccv: "{\\mathcal{O}^{\\mathsf{CCMAC}_K}_{\\mathit{CV}}}",
-      oracc: "{\\mathcal{O}^{\\mathsf{CCMAC}_K}_{C}}",
-      ccmacn: "{\\mathsf{Naive}}",
-      ccmace: "{\\mathsf{EC}}",
-
     }
   }
 };
