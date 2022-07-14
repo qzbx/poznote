@@ -8,12 +8,10 @@
 }
 
 body::-webkit-scrollbar {
-  background: #fff;
   width: 14px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #445;
 }
 
 /* ============================== */
@@ -53,14 +51,6 @@ body::-webkit-scrollbar-thumb {
   /* transition: .3s; */
 }
 
-.fa-angle-double-right {
-  color: #657;
-}
-
-.fa-angle-double-left {
-  color: #657;
-}
-
 .nav-btn:checked ~ .nav-label {
   left: 265px;
 }
@@ -90,8 +80,6 @@ body::-webkit-scrollbar-thumb {
   padding: 0.4rem 0.4rem;
   font-size: 0.9rem;
   line-height: 155%;
-  color: #fff;
-  background: #657;
   height: 100vh;
   overflow-y: auto;
   z-index: 5;
@@ -107,12 +95,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 .nav::-webkit-scrollbar {
-  background: #657;
   width: 12px;
 }
 
 .nav::-webkit-scrollbar-thumb {
-  background: #445;
 }
 
 .nav h1 {
@@ -129,11 +115,10 @@ body::-webkit-scrollbar-thumb {
   line-height: 140%;
   margin: 1rem 0.5rem 1.0rem 0.5rem;
   padding: 0 0.5rem 0.2rem 0.5rem;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid;
 }
 
 .nav a {
-  color: #fff;
 }
 
 .nav summary {
@@ -156,7 +141,6 @@ body::-webkit-scrollbar-thumb {
   overflow-y: auto;
   display: flex;
   justify-content: center;
-  background: #fff;
   min-height: 100vh;
 }
 /* サイドバー開時 */
@@ -166,23 +150,15 @@ body::-webkit-scrollbar-thumb {
 
 .md {
   line-height: 175%;
-  color: #102;
   width: 90%;
   /* max-width: 800px; */
   padding: 1.2rem 2.4rem 4rem 2.4rem;
-  background: #fff;
 }
 
 /* レスポンシブ */
 @media screen and (min-width: 1160px) {
-  .wrapper {
-    background: #bdbbbf;
-  }
   .md {
     padding: 1.2rem 5.4rem 4rem 5.4rem;
-  }
-  body::-webkit-scrollbar {
-    background: #bdbbbf;
   }
 }
 
@@ -192,7 +168,6 @@ body::-webkit-scrollbar-thumb {
   line-height: 140%;
   font-weight: bold;
   margin: 1.0rem 0.0rem 0rem 0.2rem;
-  color: #657;
 }
 .md h2 {
   font-size: 1.4rem;
@@ -200,8 +175,6 @@ body::-webkit-scrollbar-thumb {
   font-weight: normal;
   padding: 0.6rem 1.4rem 0.3rem 1.4rem;
   margin: 2.0rem 0 0.6rem  0;
-  color: #fff;
-  background: #657;
 }
 .md h1 + h2 {
   margin-top: 1.2rem;
@@ -212,8 +185,7 @@ body::-webkit-scrollbar-thumb {
   font-weight: normal;
   padding: 0.2rem 0 0 0.8rem;
   margin: 1.8rem 0.0rem 0.5rem 0.2rem;
-  color: #435;
-  border-left: 10px solid #ea3;
+  border-left: 10px solid;
 }
 .md h2 + h3 {
   margin-top: 1.0rem;
@@ -223,9 +195,8 @@ body::-webkit-scrollbar-thumb {
   line-height: 140%;
   font-weight: bold;
   margin: 1.8rem 0.45rem 0 0.45rem;
-  color: #657;
   padding: 0.2rem 0 0 0.8rem;
-  border-left: solid 3px #657;
+  border-left: solid 3px;
 }
 .md h3 + h4 {
   margin-top: 1.0rem;
@@ -240,7 +211,6 @@ body::-webkit-scrollbar-thumb {
   font-weight: normal;
   margin-top: 1.5rem;
   margin-left: 0.2rem;
-  color: #657;
 }
 .md h5 + h2 {
   margin-top: 0.8rem;
@@ -256,7 +226,6 @@ body::-webkit-scrollbar-thumb {
   line-height: 140%;
   font-weight: normal;
   padding: 1.0rem 0.0rem 0.2rem 0.4rem;
-  color: #102;
 }
 
 /* 地の文 */
@@ -267,30 +236,25 @@ body::-webkit-scrollbar-thumb {
   margin-top: 0.2rem;
 }
 .md em {
-  color: #546;
   font-weight: bold;
   font-style: normal;
 }
 .md strong {
-  color: #d70;
   font-weight: bold;
   font-style: normal;
 }
 .md em strong {
-  color: #d70;
   font-weight: bold;
   font-style: normal;
 }
 .md a {
-  color: #54d;
 }
 
 /* 引用 */
 .md blockquote {
   margin: 0.7rem 0 0 1.4rem;
   padding: 0.2rem 0 0.1rem 0;
-  border-left: 0.25rem solid #ddd;
-  color: #555;
+  border-left: 0.25rem solid;
 }
 .md blockquote + blockquote {
   margin-top: 1.2rem;
@@ -299,7 +263,6 @@ body::-webkit-scrollbar-thumb {
   line-height: 175%;
   font-size: 1rem;
   margin: 0 0.8rem;
-  color: #668;
 }
 .md blockquote h1 + * {
   margin-top: 0.2rem;
@@ -367,7 +330,7 @@ body::-webkit-scrollbar-thumb {
 
 /* 図表 */
 .md table {
-  border: 2px solid #445;
+  border: 2px solid;
   margin: 0rem 1.0rem;
 }
 .md p + table, .md ul + table, .md ol + table, .md blockquote + table {
@@ -379,20 +342,20 @@ body::-webkit-scrollbar-thumb {
 /* 一行分 */
 .md table thead {
   font-size: 94%;
-  border: 2px solid #445;
+  border: 2px solid;
 }
 /* 各セル */
 .md table thead th {
   padding: 0.3rem 0.8rem 0.0rem 0.8rem;
   font-weight: normal;
-  background: #918897;
-  color: #fff;
 }
 .md table tbody td {
   padding: 0.25rem 0.8rem 0rem 0.8rem;
-  border-left: 2px solid #445;
+  border-left: 2px solid;
 }
 
+
+/* 数式系 */
 .md figure {
   padding: 1rem 2rem 0rem 2rem;
   width: fit-content;
@@ -412,41 +375,6 @@ body::-webkit-scrollbar-thumb {
   line-height: 150%;
   margin-left: 1rem;
   margin-bottom: 1.0rem;
-  color: #444;
-}
-.md .alg h4 {
-  padding-left: 0.5rem;
-}
-.md .alg h5 {
-  padding-left: 0.5rem;
-}
-.md .alg p + ol {
-  margin-top: -0.6rem;
-}
-.md .alg .MathJax {
-  font-size: 80%;
-}
-
-.md figure {
-  padding: 1rem 2rem 0rem 2rem;
-  width: fit-content;
-  text-align: center;
-}
-.md figcaption {
-  padding: 0.5rem 1.0rem;
-  font-size: 0.9rem;
-}
-
-.md .MathJax {
-  font-size: 90%;
-}
-
-.md .alg {
-  font-size: 90%;
-  line-height: 150%;
-  margin-left: 1rem;
-  margin-bottom: 1.0rem;
-  color: #444;
 }
 .md .alg h4 {
   padding-left: 0.5rem;
@@ -480,7 +408,7 @@ body::-webkit-scrollbar-thumb {
 
 /* 水平線 */
 .md hr {
-  border-top: 2px solid #879;
+  border-top: 2px solid;
 }
 
 

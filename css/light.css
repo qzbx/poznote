@@ -1,0 +1,166 @@
+/* 文字化け防止 */
+@charset "UTF-8";
+
+/* 全体 */
+:root {
+}
+
+body::-webkit-scrollbar {
+  background: #fff;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #445;
+}
+
+/* ============================== */
+/* 開閉ボタン
+/* ============================== */
+
+/* サイドバー開閉ボタン */
+.fa-angle-double-right {
+  color: #657;
+}
+
+.fa-angle-double-left {
+  color: #657;
+}
+
+
+/* ============================== */
+/* サイドバー（TOC）              */
+/* ============================== */
+
+.nav {
+  color: #fff;
+  background: #657;
+}
+
+.nav::-webkit-scrollbar {
+  background: #657;
+}
+
+.nav::-webkit-scrollbar-thumb {
+  background: #445;
+}
+
+.nav h2 {
+  border-bottom-color: #fff;
+}
+
+.nav a {
+  color: #fff;
+}
+
+
+/* ============================== */
+/* コンテンツ本体                 */
+/* ============================== */
+
+.wrapper {
+  background: #fff;
+}
+
+.md {
+  color: #102;
+  background: #fff;
+}
+
+/* レスポンシブ */
+@media screen and (min-width: 1160px) {
+  .wrapper {
+    background: #bdbbbf;
+  }
+  body::-webkit-scrollbar {
+    background: #bdbbbf;
+  }
+}
+
+/* 見出し */
+.md h1 {
+  color: #657;
+}
+.md h2 {
+  color: #fff;
+  background: #657;
+}
+.md h3 {
+  color: #435;
+  border-left-color: #ea3;
+}
+.md h4 {
+  color: #657;
+  border-left-color: #657;
+}
+/* 動画チャプター用 */
+.md h5 {
+  color: #657;
+}
+.md h6 {
+  color: #102;
+}
+
+/* 地の文 */
+.md p {
+}
+.md em {
+  color: #546;
+}
+.md strong {
+  color: #d70;
+}
+.md em strong {
+  color: #d70;
+}
+.md a {
+  color: #54d;
+}
+
+/* 引用 */
+.md blockquote {
+  border-left-color: #ddd;
+  color: #555;
+}
+.md blockquote h1 {
+  color: #668;
+}
+
+/* リスト構造 */
+/* リスト内 */
+
+/* 図表 */
+.md table {
+  border-color: #445;
+}
+/* 一行分 */
+.md table thead {
+  border-color: #445;
+}
+/* 各セル */
+.md table thead th {
+  color: #fff;
+  background: #918897;
+}
+.md table tbody td {
+  border-left-color: #445;
+}
+
+
+/* 数式系 */
+.md .alg {
+  color: #444;
+}
+
+/* コード */
+.md pre {
+}
+.md code {
+}
+
+/* 水平線 */
+.md hr {
+  border-top-color: #879;
+}
+
+
+
